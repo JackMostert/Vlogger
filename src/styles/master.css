@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html .root,
+body .root {
+  width: 100vw;
+  height: 100vh;
+  background-color: #3c4f6c;
+  background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
+}
+
+/*# sourceMappingURL=master.css.map */

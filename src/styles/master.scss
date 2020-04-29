@@ -1,0 +1,18 @@
+@import "./variables/colors";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  .root {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color_background_main;
+    background: linear-gradient(
+      180deg,
+      $color_background_main 0%,
+      $color_background_secondary 100%
+    );
+  }
+}
