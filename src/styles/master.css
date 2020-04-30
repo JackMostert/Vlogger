@@ -1,14 +1,102 @@
+p {
+  margin: 0;
+  font-size: 1rem;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 html .root,
 body .root {
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
   background-color: #3c4f6c;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3c4f6c), to(#0a1944));
   background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
+  overflow: hidden;
 }
 
+.page-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+}
+
+.page-header p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-left: 15px;
+  text-transform: capitalize;
+}
+
+.page-header__left-container, .page-header__right-container {
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #d9d8dd;
+}
+
+.page-header__left-container button, .page-header__right-container button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.page-header__left-container i, .page-header__right-container i {
+  color: #d9d8dd;
+  cursor: pointer;
+}
+
+.page-header__left-container {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.page-header__left-container i {
+  -webkit-transform: rotateZ(-90deg);
+          transform: rotateZ(-90deg);
+  font-size: 2.5rem;
+}
+
+.page-header__right-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.page-header__right-container i {
+  font-size: 2rem;
+}
+
+.page-body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 10px;
+}
 /*# sourceMappingURL=master.css.map */
