@@ -8,32 +8,41 @@ class RootHeader extends React.Component<{}> {
   private onNavStateChange = (state: "open" | "close") => {
     rootStore.uiStore.set("rootNavigationOpenState", state);
   };
+
   public render() {
     const navOpenState = rootStore.uiStore.rootNavigationOpenState;
-    return (
-      <>
-        <div className={`root-nav root-nav--${navOpenState}`}>
-          <nav className="root-nav__nav"></nav>
-          <div
-            className="root-nav__shadow"
-            onClick={() => this.onNavStateChange("close")}
-          ></div>
-        </div>
+    const navClassName = `rootheader__nav-container rootheader__nav-container--${navOpenState}`;
 
-        <header className="page-header">
-          <div className="page-header__left-container">
-            <button onClick={() => this.onNavStateChange("open")}>
-              <i className="lab la-gitter"></i>
-            </button>
-            <p>{rootStore?.routeStore.current}</p>
+    return (
+      <header className="rootheader">
+        <section className={navClassName}>
+          <nav className="rootheader__links-holder"></nav>
+          <div
+            className="rootheader__nav-shadow"
+            onClick={() => this.onNavStateChange("close")}
+          />
+        </section>
+        <section className="rootheader__display-content">
+          <div className="rootheader__content">
+            <button
+              className="rootheader__button"
+              onClick={() => this.onNavStateChange("open")}
+              children={<i className="lab la-gitter rootheader__icon"></i>}
+            />
+            <span
+              className="rootheader__text"
+              children={rootStore?.routeStore.current}
+            />
           </div>
-          <div className="page-header__right-container">
-            <button>
-              <i className="las la-search"></i>
-            </button>
+          <div className="rootheader__content">
+            <button
+              className="rootheader__button"
+              onClick={() => this.onNavStateChange("open")}
+              children={<i className="las la-search rootheader__icon"></i>}
+            />
           </div>
-        </header>
-      </>
+        </section>
+      </header>
     );
   }
 }

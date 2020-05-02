@@ -1,0 +1,106 @@
+@use 'sass:map';
+
+$font-weights: (
+  "light": 100,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+$font-sites: (
+  "h1": 6rem,
+  "h2": 3.75rem,
+  "h3": 3rem,
+  "h4": 2.125rem,
+  "h5": 1.5rem,
+  "h6": 1.25rem,
+  "p": 1rem,
+);
+
+%general-style-reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+%base-font-style {
+  line-height: 1rem;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+%font-style-h1 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h1");
+  letter-spacing: -1.5px;
+  font-weight: map.get($font-weights, "light");
+}
+
+%font-style-h2 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h2");
+  letter-spacing: -0.5px;
+  font-weight: map.get($font-weights, "light");
+}
+
+%font-style-h3 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h3");
+  letter-spacing: 0px;
+  font-weight: map.get($font-weights, "light");
+}
+
+%font-style-h4 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h4");
+  letter-spacing: 0.25px;
+  font-weight: map.get($font-weights, "regular");
+}
+
+%font-style-h5 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h5");
+  letter-spacing: 0px;
+  font-weight: map.get($font-weights, "regular");
+}
+
+%font-style-h6 {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "h6");
+  letter-spacing: 0.15px;
+  font-weight: map.get($font-weights, "regular");
+}
+
+%font-style-p {
+  @extend %general-style-reset;
+  font-size: map.get($font-sites, "p");
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  margin: 0;
+  font-weight: map.get($font-weights, "regular");
+}
+
+h1 {
+  @extend %font-style-h1;
+}
+h2 {
+  @extend %font-style-h2;
+}
+h3 {
+  @extend %font-style-h3;
+}
+h4 {
+  @extend %font-style-h4;
+}
+h5 {
+  @extend %font-style-h5;
+}
+h6 {
+  @extend %font-style-h6;
+}
+
+p {
+  @extend %font-style-p;
+}

@@ -1,2 +1,11 @@
-$color_background_main: #3c4f6c;
-$color_background_secondary: #0a1944;
+$color_background: (
+  "page_main": #3c4f6c,
+  "page_secondary": #0a1944,
+  "gradient_main": linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%),
+);
+
+$color_text: (
+  "lighter": white,
+  "light": #d9d8dd,
+  "normal": #fff,
+);

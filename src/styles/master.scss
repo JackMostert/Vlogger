@@ -1,10 +1,10 @@
+@use 'sass:map';
+
 @import "./variables/colors";
 @import "./variables/layout";
-
-p {
-  margin: 0;
-  font-size: 1rem;
-}
+@import "./variables/font";
+@import "./components/HashTag";
+@import "./components/RootHeader";
 
 html,
 body {
@@ -19,107 +19,8 @@ body {
     flex-flow: column;
     position: relative;
     overflow: hidden;
-    background-color: $color_background_main;
-    background: linear-gradient(
-      180deg,
-      $color_background_main 0%,
-      $color_background_secondary 100%
-    );
-
-    &-nav {
-      transition: all ease 0.2s;
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      bottom: 0;
-      display: flex;
-
-      &--close {
-        width: 0%;
-        left: -300px;
-      }
-
-      &--open {
-        left: 0;
-        width: 100%;
-      }
-
-      &__nav {
-        max-width: 300px;
-        min-width: 200px;
-        width: 80%;
-        height: inherit;
-        background-color: white;
-      }
-
-      &__shadow {
-        flex: 1;
-        background-color: rgba(0, 0, 0, 0.6);
-      }
-    }
-
-    // .page-header__side-nav {
-    //   transition: all ease 0.2s;
-    //   position: absolute;
-    //   max-width: 300px;
-    //   background-color: white;
-
-    //   &--close {
-    //     left: -300px;
-    //   }
-
-    //   &--open {
-    //     left: 0;
-    //   }
-    // }
-  }
-}
-
-.page-header {
-  display: flex;
-  box-sizing: border-box;
-  padding: $page_padding;
-
-  p {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-left: 15px;
-    text-transform: capitalize;
-  }
-
-  &__left-container,
-  &__right-container {
-    height: inherit;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    color: #d9d8dd;
-
-    button {
-      background: none;
-      border: none;
-      outline: none;
-    }
-
-    i {
-      color: #d9d8dd;
-      cursor: pointer;
-    }
-  }
-
-  &__left-container {
-    justify-content: flex-start;
-    i {
-      transform: rotateZ(-90deg);
-      font-size: 2.5rem;
-    }
-  }
-
-  &__right-container {
-    justify-content: flex-end;
-    i {
-      font-size: 2rem;
-    }
+    background-color: map.get($color_background, "page_main");
+    background: map.get($color_background, "gradient_main");
   }
 }
 
