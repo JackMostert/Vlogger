@@ -50,6 +50,35 @@ p {
   font-weight: 400;
 }
 
+.hashtag {
+  position: relative;
+  display: flex;
+  height: 150px;
+  width: 150px;
+  box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.2);
+}
+.hashtag__img {
+  width: inherit;
+  height: inherit;
+}
+.hashtag__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a194470;
+  text-transform: capitalize;
+  text-align: center;
+}
+.hashtag__text {
+  color: white;
+  font-size: 1rem;
+}
+
 .rootheader {
   height: 70px;
   width: 100%;
@@ -137,11 +166,22 @@ body .root {
   background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
 }
 
-.page-body {
+.page {
   flex: 1;
   overflow-y: auto;
   box-sizing: border-box;
-  padding: 0 10px;
+}
+
+.scrollable-hor {
+  height: auto;
+  padding: 10px 0px 10px 10px;
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.scrollable-hor > * {
+  margin-right: 20px;
 }
 
 /*# sourceMappingURL=master.css.map */

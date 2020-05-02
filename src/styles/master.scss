@@ -24,9 +24,25 @@ body {
   }
 }
 
-.page-body {
+.page {
   flex: 1;
   overflow-y: auto;
   box-sizing: border-box;
-  padding: 0 $page_padding;
+
+  &__discover,
+  &__recent {
+    padding: 0 $page_padding;
+  }
+}
+
+.scrollable-hor {
+  height: auto;
+  padding: 10px 0px 10px 10px;
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  & > * {
+    margin-right: 20px;
+  }
 }

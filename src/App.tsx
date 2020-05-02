@@ -11,11 +11,39 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
     return (
       <section className="root">
         <RootHeader />
-        <section className="page-body">
-          <HashTag />
-          <HashTag />
-          <HashTag />
-          <HashTag />
+        <section className="page">
+          <div className="scrollable-hor">
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+            <HashTag
+              hashtag="#happy feelings"
+              url="https://picsum.photos/200/200"
+            />
+          </div>
+          <section className="page__discover"></section>
+          <section className="page__recent"></section>
         </section>
       </section>
     );

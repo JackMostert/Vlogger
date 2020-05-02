@@ -14,7 +14,7 @@ class RootHeader extends React.Component<{}> {
     const navClassName = `rootheader__nav-container rootheader__nav-container--${navOpenState}`;
 
     return (
-      <header className="rootheader">
+      <aside className="rootheader">
         <section className={navClassName}>
           <nav className="rootheader__links-holder"></nav>
           <div
@@ -42,7 +42,7 @@ class RootHeader extends React.Component<{}> {
             />
           </div>
         </section>
-      </header>
+      </aside>
     );
   }
 }
