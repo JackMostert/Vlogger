@@ -5,6 +5,10 @@
 @import "./variables/font";
 @import "./components/HashTag";
 @import "./components/RootHeader";
+@import "./components/ScrollableDiv";
+@import "./components/Media";
+@import "./components/ProfileThumbnail";
+@import "./components/BasicStats";
 
 html,
 body {
@@ -33,16 +37,7 @@ body {
   &__recent {
     padding: 0 $page_padding;
   }
-}
-
-.scrollable-hor {
-  height: auto;
-  padding: 10px 0px 10px 10px;
-  width: 100%;
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  & > * {
-    margin-right: 20px;
+  &__discover {
+    padding-top: 30px;
   }
 }

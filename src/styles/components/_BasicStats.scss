@@ -1,0 +1,16 @@
+.basicstats {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    font-size: 1.2rem;
+    color: map-get($color_text, "light");
+  }
+
+  &__text {
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: map-get($color_text, "light");
+  }
+}

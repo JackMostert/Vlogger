@@ -51,11 +51,18 @@ p {
 }
 
 .hashtag {
-  position: relative;
-  display: flex;
   height: 150px;
   width: 150px;
   box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.2);
+}
+.hashtag__btn {
+  position: relative;
+  display: flex;
+  width: inherit;
+  height: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 .hashtag__img {
   width: inherit;
@@ -148,6 +155,82 @@ p {
   font-size: 2rem;
 }
 
+.scrollablediv {
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+.scrollablediv--hor {
+  height: auto;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.scrollablediv--hor > * {
+  margin-right: 20px;
+}
+.scrollablediv--hor::-webkit-scrollbar {
+  display: none;
+}
+.scrollablediv--vert {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.scrollablediv--vert > * {
+  margin-bottom: 20px;
+}
+
+.media {
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+.media__header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.media__left-content {
+  display: flex;
+  align-items: center;
+}
+.media__left-content > *:nth-of-type(1) {
+  margin-right: 10px;
+}
+
+.profilethumbnail {
+  display: flex;
+  align-items: center;
+}
+.profilethumbnail__img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.profilethumbnail__text {
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  color: #d9d8dd;
+}
+
+.basicstats {
+  display: flex;
+  align-items: center;
+}
+.basicstats__icon {
+  font-size: 1.2rem;
+  color: #d9d8dd;
+}
+.basicstats__text {
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  color: #d9d8dd;
+}
+
 html,
 body {
   margin: 0;
@@ -171,17 +254,11 @@ body .root {
   overflow-y: auto;
   box-sizing: border-box;
 }
-
-.scrollable-hor {
-  height: auto;
-  padding: 10px 0px 10px 10px;
-  width: 100%;
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
+.page__discover, .page__recent {
+  padding: 0 10px;
 }
-.scrollable-hor > * {
-  margin-right: 20px;
+.page__discover {
+  padding-top: 30px;
 }
 
 /*# sourceMappingURL=master.css.map */

@@ -1,0 +1,29 @@
+.scrollablediv {
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+
+  &--hor {
+    height: auto;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    & > * {
+      margin-right: 20px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &--vert {
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    & > * {
+      margin-bottom: 20px;
+    }
+  }
+}

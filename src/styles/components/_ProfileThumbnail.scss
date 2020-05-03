@@ -1,0 +1,17 @@
+.profilethumbnail {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+
+  &__text {
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    color: map-get($color_text, "light");
+  }
+}
