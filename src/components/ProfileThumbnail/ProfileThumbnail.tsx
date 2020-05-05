@@ -1,4 +1,5 @@
 import * as React from "react";
+import Text from "../Text/Text";
 
 interface IProfileThumbnailProps {
   url: string;
@@ -10,12 +11,8 @@ const ProfileThumbnail: React.FunctionComponent<IProfileThumbnailProps> = (
 ) => {
   return (
     <div className="profilethumbnail">
-      <img
-        className="profilethumbnail__img"
-        src={props.url + "?" + Math.random()}
-        alt=""
-      />
-      <p className="profilethumbnail__text">{props.name}</p>
+      <img className="profilethumbnail__img" src={props.url} alt="" />
+      <Text type="p" className="profilethumbnail__text" text={props.name} />
     </div>
   );
 };

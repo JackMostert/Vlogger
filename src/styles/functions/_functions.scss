@@ -1,0 +1,25 @@
+%flex_center_horizontal {
+  display: flex;
+  align-items: center;
+}
+
+%flex_center_vertical {
+  display: flex;
+  justify-content: center;
+}
+
+%flex_center_all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex_center($hor: 0, $vert: 0) {
+  @if $hor == 1 {
+    @extend %flex_center_horizontal;
+  } @else if $vert == 1 {
+    @extend %flex_center_vertical;
+  } @else {
+    @extend %flex_center_all;
+  }
+}

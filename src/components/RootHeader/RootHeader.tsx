@@ -1,6 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import rootStore from "../../store/RootStore";
+import Text from "../Text/Text";
 
 @inject("rootStore")
 @observer
@@ -29,9 +30,10 @@ class RootHeader extends React.Component<{}> {
               onClick={() => this.onNavStateChange("open")}
               children={<i className="lab la-gitter rootheader__icon"></i>}
             />
-            <span
+            <Text
+              text={rootStore?.routeStore.current}
+              type="p"
               className="rootheader__text"
-              children={rootStore?.routeStore.current}
             />
           </div>
           <div className="rootheader__content">

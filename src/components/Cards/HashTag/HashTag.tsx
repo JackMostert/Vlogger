@@ -1,4 +1,5 @@
 import * as React from "react";
+import Text from "../../Text/Text";
 
 interface IHashTagProps {
   hashtag: string;
@@ -19,7 +20,7 @@ const HashTag: React.FunctionComponent<IHashTagProps> = (props) => {
           alt={""}
         />
         <header className="hashtag__header">
-          <p className="hashtag__text">{props.hashtag}</p>
+          <Text text={props.hashtag} type="p" className="hashtag__text" />
         </header>
       </button>
     </section>

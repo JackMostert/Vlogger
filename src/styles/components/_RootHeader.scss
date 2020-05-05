@@ -47,8 +47,7 @@
 
   &__content {
     height: inherit;
-    display: flex;
-    align-items: center;
+    @include flex_center(1, 0);
   }
 
   &__button {

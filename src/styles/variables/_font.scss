@@ -1,13 +1,11 @@
-@use 'sass:map';
-
-$font-weights: (
+$font_weights: (
   "light": 100,
   "regular": 400,
   "medium": 500,
   "bold": 700,
 );
 
-$font-sites: (
+$font_sites: (
   "h1": 6rem,
   "h2": 3.75rem,
   "h3": 3rem,
@@ -22,85 +20,110 @@ $font-sites: (
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-%base-font-style {
-  line-height: 1rem;
-  letter-spacing: 1px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+// %base-font-style {
+//   line-height: 1rem;
+//   letter-spacing: 1px;
+//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+// }
 
 %font-style-h1 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h1");
+  font-size: map.get($font_sites, "h1");
   letter-spacing: -1.5px;
-  font-weight: map.get($font-weights, "light");
+  font-weight: map.get($font_weights, "light");
 }
 
 %font-style-h2 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h2");
+  font-size: map.get($font_sites, "h2");
   letter-spacing: -0.5px;
-  font-weight: map.get($font-weights, "light");
+  font-weight: map.get($font_weights, "light");
 }
 
 %font-style-h3 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h3");
+  font-size: map.get($font_sites, "h3");
   letter-spacing: 0px;
-  font-weight: map.get($font-weights, "light");
+  font-weight: map.get($font_weights, "light");
 }
 
 %font-style-h4 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h4");
+  font-size: map.get($font_sites, "h4");
   letter-spacing: 0.25px;
-  font-weight: map.get($font-weights, "regular");
+  font-weight: map.get($font_weights, "regular");
 }
 
 %font-style-h5 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h5");
+  font-size: map.get($font_sites, "h5");
   letter-spacing: 0px;
-  font-weight: map.get($font-weights, "regular");
+  font-weight: map.get($font_weights, "regular");
 }
 
 %font-style-h6 {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "h6");
+  font-size: map.get($font_sites, "h6");
   letter-spacing: 0.15px;
-  font-weight: map.get($font-weights, "regular");
+  font-weight: map.get($font_weights, "regular");
 }
 
 %font-style-p {
   @extend %general-style-reset;
-  font-size: map.get($font-sites, "p");
+  font-size: map.get($font_sites, "p");
   line-height: 1.5rem;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   margin: 0;
-  font-weight: map.get($font-weights, "regular");
+  font-weight: map.get($font_weights, "regular");
 }
 
-h1 {
+.text {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-type-h1 {
   @extend %font-style-h1;
 }
-h2 {
+.text-type-h2 {
   @extend %font-style-h2;
 }
-h3 {
+.text-type-h3 {
   @extend %font-style-h3;
 }
-h4 {
+.text-type-h4 {
   @extend %font-style-h4;
 }
-h5 {
+.text-type-h5 {
   @extend %font-style-h5;
 }
-h6 {
+.text-type-h6 {
   @extend %font-style-h6;
 }
-
-p {
+.text-type-p {
   @extend %font-style-p;
 }
+
+// h1 {
+//   @extend %font-style-h1;
+// }
+// h2 {
+//   @extend %font-style-h2;
+// }
+// h3 {
+//   @extend %font-style-h3;
+// }
+// h4 {
+//   @extend %font-style-h4;
+// }
+// h5 {
+//   @extend %font-style-h5;
+// }
+// h6 {
+//   @extend %font-style-h6;
+// }
+
+// p {
+//   @extend %font-style-p;
+// }

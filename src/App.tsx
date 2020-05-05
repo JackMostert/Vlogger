@@ -5,6 +5,7 @@ import RootHeader from "./components/RootHeader/RootHeader";
 import HashTag from "./components/Cards/HashTag/HashTag";
 import ScrollableDiv from "./components/ScrollableDiv/ScrollableDiv";
 import Media from "./components/Cards/Media/Media";
+import Text from "./components/Text/Text";
 
 @inject("rootStore")
 @observer
@@ -52,8 +53,11 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
             />
           </ScrollableDiv>
           <section className="page__discover">
-            <h5>Discover</h5>
-            <br></br>
+            <Text
+              type="h5"
+              text="Discover"
+              style={{ color: "white", marginBottom: 10 }}
+            />
             <Media />
             <Media />
             <Media />

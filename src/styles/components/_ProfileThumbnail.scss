@@ -1,6 +1,5 @@
 .profilethumbnail {
-  display: flex;
-  align-items: center;
+  @include flex_center(1);
 
   &__img {
     border-radius: 50%;
@@ -9,9 +8,10 @@
   }
 
   &__text {
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
     font-size: 0.9rem;
-    margin-left: 10px;
+    margin-left: 5px;
     color: map-get($color_text, "light");
+    font-weight: map-get($font_weights, "regular");
   }
 }
