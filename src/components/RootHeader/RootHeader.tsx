@@ -28,7 +28,9 @@ class RootHeader extends React.Component<{}> {
             <button
               className="rootheader__button"
               onClick={() => this.onNavStateChange("open")}
-              children={<i className="lab la-gitter rootheader__icon"></i>}
+              children={
+                <i className="lab la-gitter rootheader__icon rootheader__icon-left"></i>
+              }
             />
             <Text
               text={rootStore?.routeStore.current}
@@ -40,7 +42,9 @@ class RootHeader extends React.Component<{}> {
             <button
               className="rootheader__button"
               onClick={() => this.onNavStateChange("open")}
-              children={<i className="las la-search rootheader__icon"></i>}
+              children={
+                <i className="las la-search rootheader__icon rootheader__icon-right"></i>
+              }
             />
           </div>
         </section>

@@ -14,7 +14,7 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
     return (
       <section className="root">
         <RootHeader />
-        <section className="page">
+        <section className="page" style={{ paddingTop: 10 }}>
           <ScrollableDiv direction="hor">
             <HashTag
               hashtag="#happy feelings"

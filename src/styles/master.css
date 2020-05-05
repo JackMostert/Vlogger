@@ -96,9 +96,13 @@
 }
 
 .rootheader {
-  height: 70px;
+  height: 60px;
   width: 100%;
   position: relative;
+  z-index: 10;
+  box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.15);
+  background: #7b16ee;
+  background: linear-gradient(90deg, #7b16ee 0%, #ff8f05 100%);
 }
 .rootheader__nav-container {
   display: flex;
@@ -154,11 +158,11 @@
   color: #d9d8dd;
   cursor: pointer;
 }
-.rootheader__icon:nth-of-type(1) {
+.rootheader__icon-left {
   transform: rotateZ(-90deg);
   font-size: 2.5rem;
 }
-.rootheader__icon:nth-of-type(2) {
+.rootheader__icon-right {
   font-size: 2rem;
 }
 
