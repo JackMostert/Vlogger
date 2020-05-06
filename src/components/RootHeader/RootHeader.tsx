@@ -4,13 +4,53 @@ import rootStore from "../../store/RootStore";
 import Text from "../Text/Text";
 import { Link } from "react-router-dom";
 import ProfileThumbnail from "../ProfileThumbnail/ProfileThumbnail";
+import _ from "lodash";
+import { IRoutes } from "../../store/RouteStore";
+import { withRouter } from "react-router";
 
 @inject("rootStore")
 @observer
-class RootHeader extends React.Component<{}> {
+class RootHeader extends React.Component<any> {
   private onNavStateChange = (state: "open" | "close") => {
     rootStore.uiStore.set("rootNavigationOpenState", state);
   };
+
+  private onLinkPressed = (route: IRoutes) => {
+    rootStore.UpdateCurrentRoute(route.displayName);
+    this.props.history?.push(route.url);
+    this.onNavStateChange("close");
+  };
+
+  private generateLinks = () => {
+    const routes = rootStore.routeStore.routes;
+    let links: any[] = [];
+    _.map(routes, (route: IRoutes) => {
+      links.push(
+        <li className="rootheader__link-container">
+          <button
+            className="rootheader__link"
+            title={route.arialLabel}
+            onClick={() => this.onLinkPressed(route)}
+          >
+            <i className={`rootheader__icon ${route.icon}`}></i>
+            <Text
+              className="rootheader__link-text"
+              type="p"
+              text={route.displayName}
+            />
+            <i className={`rootheader__icon-extra las la-chevron-right`}></i>
+          </button>
+        </li>
+      );
+    });
+    return links;
+  };
+
+  private links: any[] = [];
+
+  componentWillMount() {
+    this.links = this.generateLinks();
+  }
 
   public render() {
     const navOpenState = rootStore.uiStore.rootNavigationOpenState;
@@ -32,45 +72,7 @@ class RootHeader extends React.Component<{}> {
                 <Text type="p" text="diane.mckinney@example.com" />
               </div>
             </div>
-            <li className="rootheader__link-container">
-              <Link className="rootheader__link" to="/home" title="Home">
-                <i className={`rootheader__icon las la-home`}></i>
-                <Text className="rootheader__link-text" type="p" text="Home" />
-                <i
-                  className={`rootheader__icon-extra las la-chevron-right`}
-                ></i>
-              </Link>
-            </li>
-            <li className="rootheader__link-container">
-              <Link
-                className="rootheader__link"
-                to="/discover"
-                title="Discover"
-              >
-                <i className={`rootheader__icon las la-mountain`}></i>
-                <Text
-                  className="rootheader__link-text"
-                  type="p"
-                  text="Discover"
-                />
-                <i
-                  className={`rootheader__icon-extra las la-chevron-right`}
-                ></i>
-              </Link>
-            </li>
-            <li className="rootheader__link-container">
-              <Link className="rootheader__link" to="/explore" title="Explore">
-                <i className={`rootheader__icon las la-binoculars`}></i>
-                <Text
-                  className="rootheader__link-text"
-                  type="p"
-                  text="Explore"
-                />
-                <i
-                  className={`rootheader__icon-extra las la-chevron-right`}
-                ></i>
-              </Link>
-            </li>
+            {this.links}
             <div
               style={{
                 display: "flex",
@@ -133,4 +135,4 @@ class RootHeader extends React.Component<{}> {
   }
 }
 
-export default RootHeader;
+export default withRouter(RootHeader);
