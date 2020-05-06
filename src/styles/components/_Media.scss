@@ -22,7 +22,10 @@
     @include flex_center(1);
     border-radius: 500px;
     height: 36px;
-    background-color: transparentize(map-get($color_text, "dark"), 0.17);
+    background-color: transparentize(
+      map-get($color_background, "page_secondary"),
+      0.17
+    );
   }
 
   &__right-content {

@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-.hashtag__header {
+.history-item, .hashtag__header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,7 +100,7 @@
   width: 100%;
   position: relative;
   z-index: 10;
-  box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.3);
   background: #7b16ee;
   background: linear-gradient(90deg, #7b16ee 0%, #ff8f05 100%);
 }
@@ -138,7 +138,7 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 .rootheader__content {
   height: inherit;
@@ -256,6 +256,80 @@
   color: #a5b5c4;
 }
 
+.history-item {
+  width: 100%;
+  position: relative;
+  height: 75px;
+}
+.history-item__thumbnail {
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: inherit;
+  width: 75px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+.history-item__item-container {
+  border-radius: 15px;
+  padding: 5px;
+  padding-left: 82px;
+  width: 100%;
+  background-color: #3c4f6d;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.history-item__title {
+  font-weight: 300;
+  color: #f6f7f2;
+}
+.history-item__hashtags {
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.history-item__hashtag {
+  color: #a4a6aa;
+  font-weight: 300;
+  margin-right: 5px;
+}
+
+.page-home {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.page-home__discover, .page-home__recent {
+  padding: 0 20px;
+}
+.page-home__discover {
+  padding-top: 30px;
+}
+.page-home__recent {
+  padding-bottom: 5px;
+}
+.page-home__recent > * {
+  margin-bottom: 15px;
+}
+.page-home__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: white;
+}
+.page-home__header p {
+  color: #a5b5c4;
+  font-size: 1.1rem;
+}
+
 html,
 body {
   margin: 0;
@@ -271,18 +345,6 @@ body .root {
   overflow: hidden;
   background-color: #3c4f6c;
   background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
-}
-
-.page {
-  flex: 1;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
-.page__discover, .page__recent {
-  padding: 0 10px;
-}
-.page__discover {
-  padding-top: 30px;
 }
 
 .live-icon {

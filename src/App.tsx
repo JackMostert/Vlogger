@@ -6,6 +6,7 @@ import HashTag from "./components/Cards/HashTag/HashTag";
 import ScrollableDiv from "./components/ScrollableDiv/ScrollableDiv";
 import Media from "./components/Cards/Media/Media";
 import Text from "./components/Text/Text";
+import History from "./components/Cards/History/History";
 
 @inject("rootStore")
 @observer
@@ -14,7 +15,7 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
     return (
       <section className="root">
         <RootHeader />
-        <section className="page" style={{ paddingTop: 10 }}>
+        <section className="page-home" style={{ paddingTop: 10 }}>
           <ScrollableDiv direction="hor">
             <HashTag
               hashtag="#happy feelings"
@@ -52,18 +53,48 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
               onClick={(hashtag: string) => {}}
             />
           </ScrollableDiv>
-          <section className="page__discover">
-            <Text
-              type="h5"
-              text="Discover"
-              style={{ color: "white", marginBottom: 10 }}
-            />
+          <section className="page-home__discover">
+            <div className="page-home__header">
+              <Text type="h5" text="Discover" />
+              <Text type="p" text="See All" />
+            </div>
             <Media />
             <Media />
             <Media />
             <Media />
           </section>
-          <section className="page__recent"></section>
+          <br></br>
+          <section className="page-home__recent">
+            <div className="page-home__header">
+              <Text type="h5" text="Recent" />
+              <Text type="p" text="See All" />
+            </div>
+            <History
+              thumbnail="https://picsum.photos/640/300"
+              title="Some video title"
+              hashtags={["OnlyAllow30OrLessCharactercoun"]}
+            />
+            <History
+              thumbnail="https://picsum.photos/640/300"
+              title="Some video title"
+              hashtags={["OnlyAllow30OrLessCharactercoun"]}
+            />
+            <History
+              thumbnail="https://picsum.photos/640/300"
+              title="Some video title"
+              hashtags={["OnlyAllow30OrLessCharactercoun"]}
+            />
+            <History
+              thumbnail="https://picsum.photos/640/300"
+              title="Some video title"
+              hashtags={["OnlyAllow30OrLessCharactercoun"]}
+            />
+            <History
+              thumbnail="https://picsum.photos/640/300"
+              title="Some video title"
+              hashtags={["OnlyAllow30OrLessCharactercoun"]}
+            />
+          </section>
         </section>
       </section>
     );

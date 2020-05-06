@@ -1,0 +1,53 @@
+$size: 75px;
+$radius: 15px;
+
+.history-item {
+  width: 100%;
+  position: relative;
+  height: $size;
+  @include flex_center();
+
+  &__thumbnail {
+    border-radius: $radius;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: inherit;
+    width: $size;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &__item-container {
+    border-radius: $radius;
+    padding: 5px;
+    padding-left: $size + 7px;
+    width: 100%;
+    background-color: map-get($color_background, "light");
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    font-weight: 300;
+    color: map-get($color_text, "lighter");
+  }
+
+  &__hashtags {
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__hashtag {
+    color: map-get($color_text, "dark");
+    font-weight: 300;
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,32 @@
+.page-home {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  &__discover,
+  &__recent {
+    padding: 0 $page_padding;
+  }
+  &__discover {
+    padding-top: 30px;
+  }
+
+  &__recent {
+    & > * {
+      margin-bottom: 15px;
+    }
+    padding-bottom: 5px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: white;
+    p {
+      color: map-get($color_text, "normal");
+      font-size: 1.1rem;
+    }
+  }
+}

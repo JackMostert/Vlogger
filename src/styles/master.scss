@@ -12,6 +12,9 @@
 @import "./components/Media";
 @import "./components/ProfileThumbnail";
 @import "./components/BasicStats";
+@import "./components/History";
+
+@import "./pages/Home";
 
 html,
 body {
@@ -27,20 +30,6 @@ body {
     overflow: hidden;
     background-color: map.get($color_background, "page_main");
     background: map.get($color_background, "gradient_main");
-  }
-}
-
-.page {
-  flex: 1;
-  overflow-y: auto;
-  box-sizing: border-box;
-
-  &__discover,
-  &__recent {
-    padding: 0 $page_padding;
-  }
-  &__discover {
-    padding-top: 30px;
   }
 }
 
