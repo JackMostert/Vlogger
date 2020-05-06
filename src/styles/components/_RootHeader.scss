@@ -34,12 +34,80 @@
     }
   }
 
+  &__nav-header {
+    @include flex_center();
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 0 50px 0;
+
+    .profilethumbnail {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      margin-bottom: 15px;
+    }
+
+    color: #d9d8dd;
+    p {
+      letter-spacing: 1px;
+    }
+  }
+
   &__links-holder {
     max-width: 300px;
     min-width: 200px;
     width: 80%;
+    height: 100%;
     height: inherit;
-    background-color: map-get($color_text, "lighter");
+    background: linear-gradient(
+      151deg,
+      rgba(123, 22, 238, 1) 0%,
+      rgba(255, 143, 5, 1) 100%
+    );
+
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link-container {
+    list-style: none;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    background: rgba(217, 216, 221, 0.13);
+    border-radius: 1000px;
+  }
+
+  &__link {
+    @include flex_center(1, 0);
+    align-items: center;
+    line-height: 1px;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 15px 0;
+    text-decoration: none;
+  }
+
+  &__link-text {
+    color: map-get($color_text, "lighter");
+    font-size: 1.2rem;
+  }
+
+  &__icon {
+    font-size: 1.3rem;
+    color: map-get($color_text, "lighter");
+    margin-right: 15px;
+  }
+
+  &__icon-extra {
+    font-size: 1.3rem;
+    color: map-get($color_text, "lighter");
+    margin-left: auto;
   }
 
   &__nav-shadow {
