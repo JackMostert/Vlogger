@@ -6,21 +6,29 @@
 @import "./variables/colors";
 @import "./variables/layout";
 @import "./variables/font";
+@import "./variables/styles";
+
 @import "./components/HashTag";
 @import "./components/RootHeader";
 @import "./components/ScrollableDiv";
-@import "./components/Media";
 @import "./components/ProfileThumbnail";
 @import "./components/BasicStats";
 @import "./components/History";
+@import "./components/Icon";
+@import "./components/Image";
 
 @import "./pages/Home";
+@import "./pages/Discover";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1rem;
+}
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-
   .root {
     width: 100vw;
     height: 100vh;
@@ -31,6 +39,19 @@ body {
     background-color: map.get($color_background, "page_main");
     background: map.get($color_background, "gradient_main");
   }
+}
+
+.page {
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .live-icon {

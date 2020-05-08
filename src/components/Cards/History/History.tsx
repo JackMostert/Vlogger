@@ -9,7 +9,7 @@ interface IHistoryProps {
 
 const History: React.FunctionComponent<IHistoryProps> = (props) => {
   return (
-    <div className="history-item">
+    <button className="history-item">
       <img
         className="history-item__thumbnail"
         src={props.thumbnail + "?" + Math.random()}
@@ -25,7 +25,7 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
           />
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

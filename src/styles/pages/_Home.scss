@@ -1,8 +1,4 @@
 .page-home {
-  flex: 1;
-  overflow-y: auto;
-  box-sizing: border-box;
-
   &__discover,
   &__recent {
     padding: 0 $page_padding;

@@ -1,0 +1,41 @@
+.image-card {
+  display: flex;
+  position: relative;
+  border-radius: map-get($border_radius, "large");
+  box-shadow: map-get($box_shadows, "medium");
+  height: 220px;
+  width: 100%;
+
+  &__img {
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__content-holder {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__content-left,
+  &__content-right {
+    background: transparentize(
+      map-get($color_background, "page_secondary"),
+      0.17
+    );
+    padding: 3px 5px;
+    border-radius: 100px;
+  }
+}

@@ -1,0 +1,17 @@
+$border_radius: (
+  "small": 3px,
+  "regular": 7px,
+  "medium": 13px,
+  "large": 20px,
+  "xlarge": 27px,
+  "xxlarge": 35px,
+  "xxxlarge": 45px,
+  "super": 55px,
+  "max": 1000px,
+);
+
+$box_shadows: (
+  "small": 0 0 3px 3px rgba(0, 0, 0, 0.2),
+  "regular": 0 0 3px 1px rgba(0, 0, 0, 0.2),
+  "medium": 0 0 7px 2px rgba(0, 0, 0, 0.2),
+);

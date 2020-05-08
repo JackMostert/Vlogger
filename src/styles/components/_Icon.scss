@@ -1,0 +1,9 @@
+.icon {
+  display: flex;
+  align-items: center;
+  color: map-get($color_text, "light");
+
+  &__icon {
+    margin-right: 0.2em;
+  }
+}

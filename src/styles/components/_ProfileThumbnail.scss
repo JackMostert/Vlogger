@@ -3,13 +3,12 @@
 
   &__img {
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
   }
 
   &__text {
-    letter-spacing: -0.5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-left: 5px;
     color: map-get($color_text, "light");
     font-weight: map-get($font_weights, "regular");
