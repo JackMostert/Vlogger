@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface IImageProps {
+export interface IImageProps {
   imgURL: string;
   contentLeft?: React.ReactElement;
   contentRight?: React.ReactElement;

@@ -73,7 +73,66 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
               textProps={{
                 type: "p",
                 text: moment().startOf("day").fromNow(),
-                // style: { fontWeight: 100 },
+              }}
+            />
+          }
+        />
+        <br></br>
+        <ImageCard
+          imgURL="https://picsum.photos/640/300"
+          contentLeft={
+            <ProfileThumbnail
+              name="Jane Doe"
+              url="https://randomuser.me/api/portraits/women/17.jpg"
+            />
+          }
+          contentRight={
+            <Icon
+              iconName="las la-feather-alt"
+              iconSize={22}
+              textProps={{
+                type: "p",
+                text: moment().startOf("day").fromNow(),
+              }}
+            />
+          }
+        />
+        <br></br>
+        <ImageCard
+          imgURL="https://picsum.photos/640/300"
+          contentLeft={
+            <ProfileThumbnail
+              name="Jane Doe"
+              url="https://randomuser.me/api/portraits/women/17.jpg"
+            />
+          }
+          contentRight={
+            <Icon
+              iconName="las la-feather-alt"
+              iconSize={22}
+              textProps={{
+                type: "p",
+                text: moment().startOf("day").fromNow(),
+              }}
+            />
+          }
+        />
+        <br></br>
+        <ImageCard
+          imgURL="https://picsum.photos/640/300"
+          contentLeft={
+            <ProfileThumbnail
+              name="Jane Doe"
+              url="https://randomuser.me/api/portraits/women/17.jpg"
+            />
+          }
+          contentRight={
+            <Icon
+              iconName="las la-feather-alt"
+              iconSize={22}
+              textProps={{
+                type: "p",
+                text: moment().startOf("day").fromNow(),
               }}
             />
           }

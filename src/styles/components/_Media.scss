@@ -1,0 +1,44 @@
+.media-card {
+  width: 100%;
+  background-color: map-get($color_background, "tertiary");
+  border-radius: map-get($border_radius, "large");
+  box-shadow: map-get($box_shadows, "medium");
+
+  .image-card {
+    border-radius: none;
+    box-shadow: none;
+  }
+
+  .image-card__img {
+    border-radius: map-get($border_radius, "large")
+      map-get($border_radius, "large") 0 0;
+  }
+
+  &__content {
+    padding: 15px 10px 10px 10px;
+    text-align: left;
+  }
+
+  &__header {
+    color: map-get($color_text, "lighter");
+    padding-bottom: 10px;
+  }
+
+  &__discription {
+    color: map-get($color_text, "light");
+    font-weight: 100;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  &__stats {
+    padding-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__hashtag {
+    color: map-get($color_text, "dark");
+  }
+}
