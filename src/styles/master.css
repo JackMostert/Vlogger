@@ -65,8 +65,10 @@
 }
 
 .hashtag {
-  height: 150px;
-  width: 150px;
+  max-height: 150px;
+  max-width: 150px;
+  width: 100%;
+  height: 100%;
   box-shadow: 0 3px 6px 3px rgba(0, 0, 0, 0.2);
 }
 .hashtag__btn {
@@ -234,12 +236,16 @@
 }
 .scrollablediv--hor {
   height: auto;
+  display: grid;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
 }
 .scrollablediv--hor > * {
   margin-right: 20px;
+}
+.scrollablediv--hor .hashtag {
+  width: 150px;
 }
 .scrollablediv--hor::-webkit-scrollbar {
   display: none;
@@ -433,6 +439,42 @@
 }
 .page-discover > * {
   margin-bottom: 20px;
+}
+
+.page-explore {
+  padding: 0 20px 20px 20px;
+}
+.page-explore__input-field {
+  padding: 20px 10px 20px 50px;
+  width: 100%;
+  border-radius: 1000px;
+  border: solid 1px transparent;
+  font-size: 1rem;
+  color: #0a1944;
+}
+.page-explore__input-field::placeholder {
+  color: #a5b5c4;
+}
+.page-explore__input-field-icon {
+  color: #a5b5c4;
+  position: absolute;
+  left: 3.5vw;
+}
+.page-explore__form-container {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.page-explore__hashtag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+.page-explore__hashtag-grid > * {
+  margin: 0 auto;
 }
 
 * {

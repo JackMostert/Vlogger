@@ -1,0 +1,40 @@
+.page-explore {
+  padding: 0 20px 20px 20px;
+
+  &__input-field {
+    padding: 20px 10px 20px 50px;
+    width: 100%;
+    border-radius: 1000px;
+    border: solid 1px transparent;
+    font-size: 1rem;
+    color: map-get($color_text, "darker");
+
+    &::placeholder {
+      color: map-get($color_text, "normal");
+    }
+
+    &-icon {
+      color: map-get($color_text, "normal");
+      position: absolute;
+      left: 3.5vw;
+    }
+  }
+
+  &__form-container {
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__hashtag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 15px;
+    & > * {
+      margin: 0 auto;
+    }
+  }
+}
