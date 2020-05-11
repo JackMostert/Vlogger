@@ -120,13 +120,23 @@ class RootHeader extends React.Component<any> {
             />
           </div>
           <div className="rootheader__content">
-            <button
-              className="rootheader__button"
-              onClick={() => this.onNavStateChange("open")}
-              children={
-                <i className="las la-search rootheader__icon rootheader__icon-right"></i>
-              }
-            />
+            {rootStore.routingStore.location.pathname !== "/explore" && (
+              <button
+                className="rootheader__button"
+                onClick={() =>
+                  this.onLinkPressed({
+                    displayName: "Explore",
+                    url: "/explore",
+                    icon: "",
+                    visited: true,
+                    arialLabel: "",
+                  })
+                }
+                children={
+                  <i className="las la-search rootheader__icon rootheader__icon-right"></i>
+                }
+              />
+            )}
           </div>
         </section>
       </aside>
