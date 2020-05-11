@@ -78,6 +78,7 @@ class RootHeader extends React.Component<any> {
                 flex: 1,
                 flexDirection: "column",
                 justifyContent: "flex-end",
+                paddingTop: 40,
               }}
             >
               <li

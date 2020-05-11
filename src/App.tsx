@@ -7,28 +7,44 @@ import Home from "./routes/Home";
 import Discover from "./routes/Discover";
 import Explore from "./routes/Explore";
 import Watch from "./routes/Watch";
+import DeviceOrientation, { Orientation } from "react-screen-orientation";
+import Text from "./components/Text/Text";
 
 @inject("rootStore")
 @observer
 class App extends React.Component<{ rootStore?: IrootStore }> {
   render() {
     return (
-      <section className="root">
-        <RootHeader />
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <Route path="/home">{(props) => <Home route={props} />}</Route>
-          <Route path="/discover">
-            {(props) => <Discover route={props} />}
-          </Route>
-          <Route path="/watch/:videoID">
-            {(props) => <Watch route={props} />}
-          </Route>
-          <Route path="/explore">{(props) => <Explore route={props} />}</Route>
-        </Switch>
-      </section>
+      <DeviceOrientation lockOrientation={"portrait"}>
+        <Orientation orientation="landscape" alwaysRender={false}>
+          <div className="orientation-landscape">
+            <Text
+              type="p"
+              text="We're sorry for the incoveniance, Support for landscape will becomming soon"
+            />
+          </div>
+        </Orientation>
+        <Orientation orientation="portrait">
+          <section className="root">
+            <RootHeader />
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+              <Route path="/home">{(props) => <Home route={props} />}</Route>
+              <Route path="/discover">
+                {(props) => <Discover route={props} />}
+              </Route>
+              <Route path="/watch/:videoID">
+                {(props) => <Watch route={props} />}
+              </Route>
+              <Route path="/explore">
+                {(props) => <Explore route={props} />}
+              </Route>
+            </Switch>
+          </section>
+        </Orientation>
+      </DeviceOrientation>
     );
   }
 }

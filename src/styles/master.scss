@@ -59,3 +59,17 @@ button {
 .live-icon {
   fill: map-get($color_text, "normal");
 }
+
+.orientation-landscape {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: map-get($color_background, "gradient_main");
+  color: white;
+}

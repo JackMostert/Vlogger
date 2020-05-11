@@ -112,7 +112,6 @@
   top: 0;
   bottom: 0;
   height: 100vh;
-  width: 100vw;
   z-index: 10;
   transition: all ease 0.2s;
 }
@@ -141,10 +140,10 @@
   letter-spacing: 1px;
 }
 .rootheader__links-holder {
+  overflow-y: auto;
   max-width: 300px;
   min-width: 200px;
   width: 80%;
-  height: 100%;
   height: inherit;
   background: linear-gradient(151deg, #7b16ee 0%, #ff8f05 100%);
   padding: 0 10px;
@@ -511,6 +510,20 @@ button {
 
 .live-icon {
   fill: #a5b5c4;
+}
+
+.orientation-landscape {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
+  color: white;
 }
 
 /*# sourceMappingURL=master.css.map */

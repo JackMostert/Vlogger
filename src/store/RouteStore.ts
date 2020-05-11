@@ -43,7 +43,7 @@ class RouteStore implements IRouteStore {
     {
       displayName: "Explore",
       url: "/explore",
-      icon: "las la-chevron-right",
+      icon: "las la-binoculars",
       visited: false,
       arialLabel: "",
     },
