@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import ProfileThumbnail from "../ProfileThumbnail/ProfileThumbnail";
 import _ from "lodash";
 import { IRoutes } from "../../store/RouteStore";
-import { withRouter } from "react-router";
 
 @inject("rootStore")
 @observer
@@ -17,7 +16,7 @@ class RootHeader extends React.Component<any> {
 
   private onLinkPressed = (route: IRoutes) => {
     rootStore.UpdateCurrentRoute(route.displayName);
-    this.props.history?.push(route.url);
+    rootStore.routingStore.history.push(route.url);
     this.onNavStateChange("close");
   };
 
@@ -135,4 +134,4 @@ class RootHeader extends React.Component<any> {
   }
 }
 
-export default withRouter(RootHeader);
+export default RootHeader;

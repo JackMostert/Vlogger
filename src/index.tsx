@@ -4,12 +4,16 @@ import App from "./App";
 import "./styles/master.css";
 import { Provider } from "mobx-react";
 import rootStore from "./store/RootStore";
+import { Router } from "react-router";
+import { history } from "./store/RootStore";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider rootStore={rootStore}>
-      <App />
+      <Router history={history}>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

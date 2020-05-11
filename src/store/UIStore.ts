@@ -1,6 +1,14 @@
 import { observable, action } from "mobx";
+import { IrootStore } from "./RootStore";
 
 class UIStore implements IUIStore {
+  @observable
+  rootStore: IrootStore;
+
+  constructor(RootStore: IrootStore) {
+    this.rootStore = RootStore;
+  }
+
   @observable
   rootNavigationOpenState: "open" | "close" = "close";
 
@@ -11,8 +19,7 @@ class UIStore implements IUIStore {
   }
 }
 
-const uiStore: IUIStore = new UIStore();
-export default uiStore;
+export default UIStore;
 
 export interface IUIStore {
   rootNavigationOpenState: "open" | "close";

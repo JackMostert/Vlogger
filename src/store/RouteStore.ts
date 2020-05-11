@@ -1,6 +1,23 @@
-import { observable } from "mobx";
+import { observable, action, autorun } from "mobx";
+import { IrootStore } from "./RootStore";
 
 class RouteStore implements IRouteStore {
+  @observable
+  rootStore: IrootStore;
+
+  constructor(RootStore: IrootStore) {
+    this.rootStore = RootStore;
+
+    autorun((reaction) => {
+      let currentRoute = this.rootStore.routingStore.location.pathname;
+      currentRoute = currentRoute.replace(/\//g, "");
+      const currentRouteCapitalized =
+        currentRoute.charAt(0).toUpperCase() + currentRoute.slice(1);
+      this.current = currentRouteCapitalized;
+      reaction.dispose();
+    });
+  }
+
   @observable
   initial = "home";
 
@@ -33,8 +50,7 @@ class RouteStore implements IRouteStore {
   ];
 }
 
-const routeStore: IRouteStore = new RouteStore();
-export default routeStore;
+export default RouteStore;
 
 export interface IRouteStore {
   initial: string;

@@ -1,6 +1,15 @@
-class LogicStore implements ILogicStore {}
+import { IrootStore } from "./RootStore";
+import { observable } from "mobx";
 
-const logicStore: ILogicStore = new LogicStore();
-export default logicStore;
+class LogicStore implements ILogicStore {
+  @observable
+  rootStore: IrootStore;
+
+  constructor(RootStore: IrootStore) {
+    this.rootStore = RootStore;
+  }
+}
+
+export default LogicStore;
 
 export interface ILogicStore {}

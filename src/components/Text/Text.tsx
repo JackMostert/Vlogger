@@ -18,7 +18,7 @@ const Text: React.FunctionComponent<ITextProps> = (props) => {
   return React.createElement(
     props.type,
     {
-      class: ClassName,
+      className: ClassName,
       style: props.style,
       fontSize: props.fontSize,
     },
