@@ -9,6 +9,7 @@ import Explore from "./routes/Explore";
 import Watch from "./routes/Watch";
 import DeviceOrientation, { Orientation } from "react-screen-orientation";
 import Text from "./components/Text/Text";
+import Logout from "./routes/Logout";
 
 @inject("rootStore")
 @observer
@@ -40,6 +41,9 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
               </Route>
               <Route path="/explore">
                 {(props) => <Explore route={props} />}
+              </Route>
+              <Route path="/logout">
+                {(props) => <Logout route={props} />}
               </Route>
             </Switch>
           </section>

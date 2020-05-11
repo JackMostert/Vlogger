@@ -85,10 +85,18 @@ class RootHeader extends React.Component<any> {
                 className="rootheader__link-container"
                 style={{ background: "none" }}
               >
-                <Link
+                <button
                   className="rootheader__link"
-                  to="/explore"
-                  title="Explore"
+                  title="Logout"
+                  onClick={() =>
+                    this.onLinkPressed({
+                      displayName: "Logout",
+                      url: "/logout",
+                      icon: "",
+                      visited: true,
+                      arialLabel: "",
+                    })
+                  }
                 >
                   <i className={`rootheader__icon las la-sign-out-alt`}></i>
                   <Text
@@ -96,7 +104,7 @@ class RootHeader extends React.Component<any> {
                     type="p"
                     text="Logout"
                   />
-                </Link>
+                </button>
               </li>
             </div>
           </nav>
