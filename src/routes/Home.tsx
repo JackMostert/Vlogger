@@ -70,6 +70,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
             <Icon
               iconName="las la-feather-alt"
               iconSize={22}
+              inline
               textProps={{
                 type: "p",
                 text: moment().startOf("day").fromNow(),
@@ -89,6 +90,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentRight={
             <Icon
               iconName="las la-feather-alt"
+              inline
               iconSize={22}
               textProps={{
                 type: "p",
@@ -109,6 +111,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentRight={
             <Icon
               iconName="las la-feather-alt"
+              inline
               iconSize={22}
               textProps={{
                 type: "p",
@@ -129,6 +132,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentRight={
             <Icon
               iconName="las la-feather-alt"
+              inline
               iconSize={22}
               textProps={{
                 type: "p",

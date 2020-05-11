@@ -328,9 +328,11 @@
 }
 
 .icon {
+  color: #d9d8dd;
+}
+.icon--inline {
   display: flex;
   align-items: center;
-  color: #d9d8dd;
 }
 .icon__icon {
   margin-right: 0.2em;

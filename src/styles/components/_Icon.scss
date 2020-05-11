@@ -1,7 +1,10 @@
 .icon {
-  display: flex;
-  align-items: center;
   color: map-get($color_text, "light");
+
+  &--inline {
+    display: flex;
+    align-items: center;
+  }
 
   &__icon {
     margin-right: 0.2em;

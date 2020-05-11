@@ -27,6 +27,8 @@ const Explore: React.FunctionComponent<IExploreProps> = (props) => {
         <Icon
           iconName="las la-search page-explore__input-field-icon"
           iconSize={29}
+          inline
+          onClick={() => {}}
         />
         <input
           className="page-explore__input-field"

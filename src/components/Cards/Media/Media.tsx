@@ -24,6 +24,7 @@ const Media: React.FunctionComponent<IMediaProps> = (props) => {
         contentRight={
           <Icon
             iconName="las la-feather-alt"
+            inline
             iconSize={22}
             textProps={{
               type: "p",
@@ -56,6 +57,7 @@ const Media: React.FunctionComponent<IMediaProps> = (props) => {
           <Icon
             iconName="las la-eye media-card__hashtag"
             iconSize={16}
+            inline
             textProps={{
               type: "p",
               text: "24.5K Views",
