@@ -17,11 +17,13 @@
 @import "./components/Icon";
 @import "./components/Media";
 @import "./components/Image";
+@import "./components/Video";
 
 @import "./pages/Home";
 @import "./pages/Discover";
 @import "./pages/Explore";
 @import "./pages/Logout";
+@import "./pages/Watch";
 
 * {
   box-sizing: border-box;

@@ -1,0 +1,57 @@
+.video {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3c4f6d;
+
+  &__aspect-ratio {
+    height: 0;
+    overflow: hidden;
+    padding-top: 800px / 600px * 100%;
+    background: map-get($color_background, "page_secondary");
+    position: relative;
+    border-radius: 10px;
+    box-shadow: map-get($box_shadows, "medium");
+  }
+
+  &__video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__video {
+    height: 100%;
+    width: 100%;
+    object-fit: scale-down;
+  }
+
+  &__svg {
+    path {
+      fill: #a5b5c4;
+    }
+  }
+
+  &__icon-control {
+    padding: 0 25px;
+    padding-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & > * {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      i {
+        margin-right: 0;
+        color: #a5b5c4;
+      }
+    }
+  }
+}

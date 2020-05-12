@@ -36,14 +36,14 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
               <Route path="/discover">
                 {(props) => <Discover route={props} />}
               </Route>
-              <Route path="/watch/:videoID">
-                {(props) => <Watch route={props} />}
-              </Route>
               <Route path="/explore">
                 {(props) => <Explore route={props} />}
               </Route>
               <Route path="/logout">
                 {(props) => <Logout route={props} />}
+              </Route>
+              <Route path="/watch::videoID">
+                {(props) => <Watch route={props} />}
               </Route>
             </Switch>
           </section>

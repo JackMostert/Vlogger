@@ -1,11 +1,16 @@
 import * as React from "react";
+import Video from "../components/Video/Video";
 
 interface IWatchProps {
   route: any;
 }
 
 const Watch: React.FunctionComponent<IWatchProps> = (props) => {
-  return <h1>Watch</h1>;
+  return (
+    <section className="page page-watch">
+      <Video />
+    </section>
+  );
 };
 
 export default Watch;

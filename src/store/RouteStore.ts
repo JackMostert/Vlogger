@@ -47,6 +47,13 @@ class RouteStore implements IRouteStore {
       visited: false,
       arialLabel: "",
     },
+    {
+      displayName: "Watch Temp Link",
+      url: "/watch:12",
+      icon: "las la-binoculars",
+      visited: false,
+      arialLabel: "",
+    },
   ];
 }
 
