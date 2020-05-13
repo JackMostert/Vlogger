@@ -61,9 +61,9 @@ class RootHeader extends React.Component<any> {
           <nav className="rootheader__links-holder">
             <div className="rootheader__nav-header">
               <ProfileThumbnail
-                url={`https://randomuser.me/api/portraits/women/${Math.floor(
-                  Math.random() * 80
-                )}.jpg`}
+                // imageURL={`https://randomuser.me/api/portraits/women/${Math.floor(
+                //   Math.random() * 80
+                // )}.jpg`}
                 name=""
               />
               <div>

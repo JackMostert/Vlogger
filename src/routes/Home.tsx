@@ -63,7 +63,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentLeft={
             <ProfileThumbnail
               name="Jane Doe"
-              url="https://randomuser.me/api/portraits/women/17.jpg"
+            //   imageURL="https://randomuser.me/api/portraits/women/17.jpg"
             />
           }
           contentRight={
@@ -84,7 +84,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentLeft={
             <ProfileThumbnail
               name="Jane Doe"
-              url="https://randomuser.me/api/portraits/women/17.jpg"
+            //   imageURL="https://randomuser.me/api/portraits/women/17.jpg"
             />
           }
           contentRight={
@@ -105,7 +105,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentLeft={
             <ProfileThumbnail
               name="Jane Doe"
-              url="https://randomuser.me/api/portraits/women/17.jpg"
+            //   imageURL="https://randomuser.me/api/portraits/women/17.jpg"
             />
           }
           contentRight={
@@ -126,7 +126,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
           contentLeft={
             <ProfileThumbnail
               name="Jane Doe"
-              url="https://randomuser.me/api/portraits/women/17.jpg"
+            //   imageURL="https://randomuser.me/api/portraits/women/17.jpg"
             />
           }
           contentRight={
