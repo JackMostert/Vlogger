@@ -2,7 +2,6 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import rootStore from "../../store/RootStore";
 import Text from "../Text/Text";
-import { Link } from "react-router-dom";
 import ProfileThumbnail from "../ProfileThumbnail/ProfileThumbnail";
 import _ from "lodash";
 import { IRoutes } from "../../store/RouteStore";
@@ -15,7 +14,6 @@ class RootHeader extends React.Component<any> {
   };
 
   private onLinkPressed = (route: IRoutes) => {
-    rootStore.UpdateCurrentRoute(route.displayName);
     rootStore.routingStore.history.push(route.url);
     this.onNavStateChange("close");
   };
@@ -60,12 +58,7 @@ class RootHeader extends React.Component<any> {
         <section className={navClassName}>
           <nav className="rootheader__links-holder">
             <div className="rootheader__nav-header">
-              <ProfileThumbnail
-                // imageURL={`https://randomuser.me/api/portraits/women/${Math.floor(
-                //   Math.random() * 80
-                // )}.jpg`}
-                name=""
-              />
+              <ProfileThumbnail name="" />
               <div>
                 <Text type="p" text="Diane Mckinney" />
                 <Text type="p" text="diane.mckinney@example.com" />
@@ -93,8 +86,8 @@ class RootHeader extends React.Component<any> {
                       displayName: "Logout",
                       url: "/logout",
                       icon: "",
-                      visited: true,
                       arialLabel: "",
+                      displayOnMenu: false,
                     })
                   }
                 >
@@ -123,7 +116,7 @@ class RootHeader extends React.Component<any> {
               }
             />
             <Text
-              text={rootStore?.routeStore.current}
+              text={rootStore?.routeStore.getCurrentRoute()?.displayName || ""}
               type="p"
               className="rootheader__text"
             />
@@ -137,8 +130,8 @@ class RootHeader extends React.Component<any> {
                     displayName: "Explore",
                     url: "/explore",
                     icon: "",
-                    visited: true,
                     arialLabel: "",
+                    displayOnMenu: false,
                   })
                 }
                 children={

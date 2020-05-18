@@ -1,4 +1,3 @@
-import { action } from "mobx";
 import LogicStore, { ILogicStore } from "./LogicStore";
 import UIStore, { IUIStore } from "./UIStore";
 import RouteStore, { IRouteStore } from "./RouteStore";
@@ -21,15 +20,6 @@ class RootStore implements IrootStore {
     this.uiStore = new UIStore(this);
     this.routeStore = new RouteStore(this);
   }
-
-  public get CurrentRoute() {
-    return this.routeStore.current;
-  }
-
-  @action
-  public UpdateCurrentRoute = (route: string) => {
-    this.routeStore.current = route;
-  };
 }
 
 const rootStore: IrootStore = new RootStore();
@@ -40,6 +30,4 @@ export interface IrootStore {
   uiStore: IUIStore;
   routeStore: IRouteStore;
   routingStore: RouterStore;
-  readonly CurrentRoute: string | undefined;
-  UpdateCurrentRoute: (route: string) => void;
 }

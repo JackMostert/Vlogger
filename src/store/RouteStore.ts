@@ -1,58 +1,60 @@
-import { observable, action, autorun } from "mobx";
+import { observable } from "mobx";
 import { IrootStore } from "./RootStore";
+import _ from "lodash";
 
 class RouteStore implements IRouteStore {
   @observable
-  rootStore: IrootStore;
+  protected rootStore: IrootStore;
 
   constructor(RootStore: IrootStore) {
     this.rootStore = RootStore;
-
-    autorun((reaction) => {
-      let currentRoute = this.rootStore.routingStore.location.pathname;
-      currentRoute = currentRoute.replace(/\//g, "");
-      const currentRouteCapitalized =
-        currentRoute.charAt(0).toUpperCase() + currentRoute.slice(1);
-      this.current = currentRouteCapitalized;
-      reaction.dispose();
-    });
   }
 
-  @observable
-  initial = "home";
+  public getCurrentRoute = (): IRoutes | any => {
+    const route = _.filter(
+      this.routes,
+      (route: IRoutes) =>
+        route.url === this.rootStore.routingStore.location.pathname
+    );
 
-  @observable
-  current = "home";
+    return route[0] || this.rootStore.routingStore.history.push("/404");
+  };
 
-  @observable
-  routes = [
+  public routes = [
     {
       displayName: "Home",
-      url: "/home",
+      url: "/",
       icon: "las la-home",
-      visited: false,
       arialLabel: "",
+      displayOnMenu: true,
     },
     {
       displayName: "Discover",
       url: "/discover",
       icon: "las la-mountain",
-      visited: false,
       arialLabel: "",
+      displayOnMenu: true,
     },
     {
       displayName: "Explore",
       url: "/explore",
       icon: "las la-binoculars",
-      visited: false,
       arialLabel: "",
+      displayOnMenu: true,
     },
     {
       displayName: "Watch Temp Link",
       url: "/watch:12",
       icon: "las la-binoculars",
-      visited: false,
       arialLabel: "",
+      displayOnMenu: true,
+    },
+    {
+      displayName: "Page Not Found",
+      url: "/404",
+      icon: "las la-home",
+      arialLabel: "",
+      displayOnMenu: false,
     },
   ];
 }
@@ -60,15 +62,14 @@ class RouteStore implements IRouteStore {
 export default RouteStore;
 
 export interface IRouteStore {
-  initial: string;
-  current: string | undefined;
   routes: Array<IRoutes>;
+  getCurrentRoute: () => IRoutes;
 }
 
 export interface IRoutes {
   displayName: string;
   url: string;
   icon: string;
-  visited: boolean;
   arialLabel: string;
+  displayOnMenu: boolean;
 }

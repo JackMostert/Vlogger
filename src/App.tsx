@@ -29,10 +29,12 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
           <section className="root">
             <RootHeader />
             <Switch>
-              <Route exact path="/">
+              {/* <Route exact path="/">
                 <Redirect to="/home" />
+              </Route> */}
+              <Route exact path="/">
+                {(props) => <Home route={props} />}
               </Route>
-              <Route path="/home">{(props) => <Home route={props} />}</Route>
               <Route path="/discover">
                 {(props) => <Discover route={props} />}
               </Route>
@@ -44,6 +46,9 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
               </Route>
               <Route path="/watch::videoID">
                 {(props) => <Watch route={props} />}
+              </Route>
+              <Route path="/404">
+                <h1>Page Not Found</h1>
               </Route>
             </Switch>
           </section>
