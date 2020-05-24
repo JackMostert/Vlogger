@@ -3,6 +3,7 @@ import UIStore, { IUIStore } from "./UIStore";
 import RouteStore, { IRouteStore } from "./RouteStore";
 import { RouterStore, syncHistoryWithStore } from "mobx-react-router";
 import Firebase, { IFirebaseStore } from "./Firebase";
+import UserStore, { IUserStore } from "./UserStore";
 const createHistory = require("history").createBrowserHistory;
 
 const routingStore = new RouterStore();
@@ -15,6 +16,7 @@ class RootStore implements IrootStore {
   public routeStore: IRouteStore;
   public routingStore: RouterStore;
   public firebase: IFirebaseStore;
+  public userstore: IUserStore;
 
   constructor() {
     this.routingStore = routingStore;
@@ -22,6 +24,7 @@ class RootStore implements IrootStore {
     this.uiStore = new UIStore(this);
     this.routeStore = new RouteStore(this);
     this.firebase = new Firebase(this);
+    this.userstore = new UserStore(this);
   }
 }
 
@@ -34,4 +37,5 @@ export interface IrootStore {
   routeStore: IRouteStore;
   routingStore: RouterStore;
   firebase: IFirebaseStore;
+  userstore: IUserStore;
 }

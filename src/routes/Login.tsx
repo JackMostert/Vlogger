@@ -9,6 +9,10 @@ interface ILoginProps {
 }
 
 class Login extends React.Component<ILoginProps, { app: any; ui: any }> {
+  //   constructor(props: ILoginProps) {
+  //     super(props);
+  //   }
+
   componentDidMount() {
     rootStore.firebase.start((authResult: any, redirectUrl: any) => {
       return false;
@@ -16,18 +20,22 @@ class Login extends React.Component<ILoginProps, { app: any; ui: any }> {
   }
 
   render() {
-    return (
-      <section className="page page-Login">
-        <div id="firebaseui-auth-container"></div>
-        <div className="message">
-          <p>
-            By continuing, you are indicating that you accept our{" "}
-            <Link to="/terms">Terms of Service</Link>
-            and <Link to="/privacy">Privacy Policy.</Link>
-          </p>
-        </div>
-      </section>
-    );
+    const isLoggedIn = !!rootStore.userstore.user;
+    if (isLoggedIn) return <h1>Logged In</h1>;
+
+    if (!isLoggedIn)
+      return (
+        <section className="page page-Login">
+          <div id="firebaseui-auth-container"></div>
+          <div className="message">
+            <p>
+              By continuing, you are indicating that you accept our{" "}
+              <Link to="/terms">Terms of Service</Link>
+              and <Link to="/privacy">Privacy Policy.</Link>
+            </p>
+          </div>
+        </section>
+      );
   }
 }
 

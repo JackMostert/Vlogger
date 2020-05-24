@@ -21,6 +21,13 @@ class Firebase implements IFirebaseStore {
     this.rootStore = RootStore;
     firebase.initializeApp(firebaseConfig);
     this.auth = new firebaseui.auth.AuthUI(firebase.auth());
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.rootStore.userstore.updateUserData(user, true);
+      } else {
+        this.rootStore.userstore.updateUserData(undefined, false);
+      }
+    });
   }
 
   @observable
@@ -43,11 +50,16 @@ class Firebase implements IFirebaseStore {
     };
     this.auth.start("#firebaseui-auth-container", uiConfig);
   };
+
+  public getUser = () => {
+    console.log(this.auth);
+  };
 }
 
 export interface IFirebaseStore {
   auth: any;
   start: (callback: Function) => void;
+  getUser: () => void;
 }
 
 export default Firebase;
