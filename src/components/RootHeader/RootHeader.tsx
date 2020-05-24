@@ -22,6 +22,7 @@ class RootHeader extends React.Component<any> {
     const routes = rootStore.routeStore.routes;
     let links: any[] = [];
     _.map(routes, (route: IRoutes) => {
+      if (route.displayOnMenu === false) return;
       links.push(
         <li className="rootheader__link-container">
           <button

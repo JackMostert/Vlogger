@@ -1,6 +1,4 @@
 import * as React from "react";
-import Video from "../components/Video/Video";
-import Description from "../components/Description/Description";
 
 interface IWatchProps {
   route: any;
@@ -9,8 +7,11 @@ interface IWatchProps {
 const Watch: React.FunctionComponent<IWatchProps> = (props) => {
   return (
     <section className="page page-watch">
-      <Video />
-      <Description />
+      <pre>
+        <code style={{ color: "white" }}>
+          {JSON.stringify(props.route.match.params, null, 2)}
+        </code>
+      </pre>
     </section>
   );
 };

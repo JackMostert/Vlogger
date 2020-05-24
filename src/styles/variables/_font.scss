@@ -20,13 +20,8 @@ $font_sites: (
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-// %base-font-style {
-//   line-height: 1rem;
-//   letter-spacing: 1px;
-//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-// }
 
 %font-style-h1 {
   @extend %general-style-reset;

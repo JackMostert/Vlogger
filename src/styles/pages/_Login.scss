@@ -1,0 +1,83 @@
+.page-Login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+  .title-text {
+    color: white;
+    margin-bottom: 70px;
+  }
+
+  .firebaseui-idp-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .firebaseui-idp-text-short {
+      display: none;
+    }
+
+    .firebaseui-idp-text-long {
+      @extend %font-style-p;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.7px;
+      color: white;
+    }
+
+    .firebaseui-idp-google {
+      .firebaseui-idp-text-long {
+        color: black;
+      }
+    }
+  }
+
+  .firebaseui-list-item {
+    width: 300px;
+    list-style: none;
+    margin: 15px 0;
+    box-shadow: map-get($box_shadows, "medium");
+  }
+
+  .firebaseui-idp-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+  }
+
+  .firebaseui-idp-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
+  }
+
+  .firebaseui-idp-icon-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .firebaseui-card-footer {
+    display: none;
+  }
+
+  .message {
+    color: rgb(224, 224, 224);
+    padding-top: 20px;
+    width: 90%;
+    margin: 0 auto;
+    p {
+      @extend %font-style-p;
+      font-size: 0.8rem;
+      letter-spacing: 0.7px;
+    }
+
+    a {
+      color: orange;
+    }
+  }
+}

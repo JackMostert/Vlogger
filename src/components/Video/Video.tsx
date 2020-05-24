@@ -3,18 +3,15 @@ import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import { ReactComponent as Chat } from "./icons8_chat.svg";
 
-interface IVideoProps {}
+interface IVideoProps {
+  src: any;
+}
 
 const Video: React.FunctionComponent<IVideoProps> = (props) => {
   return (
     <section className="video">
       <div className="video__aspect-ratio">
         <div className="video__video-container">
-          {/* <img
-            className="video__video"
-            src="https://images.unsplash.com/photo-1514543250559-83867827ecce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1311&q=80"
-            alt=""
-          /> */}
           <img
             className="video__video"
             src="https://images.unsplash.com/photo-1582567056798-7dc94989e56d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
