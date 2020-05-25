@@ -46,6 +46,10 @@ body {
     overflow: hidden;
     background-color: map.get($color_background, "page_main");
     background: map.get($color_background, "gradient_main");
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
   }
 }
 

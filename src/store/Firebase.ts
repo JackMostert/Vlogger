@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 import * as firebaseui from "firebaseui";
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 import { IrootStore } from "./RootStore";
 
 const firebaseConfig = {
@@ -17,21 +17,44 @@ class Firebase implements IFirebaseStore {
   @observable
   protected rootStore: IrootStore;
 
-  constructor(RootStore: IrootStore) {
-    this.rootStore = RootStore;
-    firebase.initializeApp(firebaseConfig);
-    this.auth = new firebaseui.auth.AuthUI(firebase.auth());
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.rootStore.userstore.updateUserData(user, true);
-      } else {
-        this.rootStore.userstore.updateUserData(undefined, false);
-      }
-    });
-  }
+  @observable
+  public firebaseui: any = undefined;
 
   @observable
-  public auth: any;
+  public app: any;
+
+  constructor(RootStore: IrootStore) {
+    this.rootStore = RootStore;
+    this.app = firebase.initializeApp(firebaseConfig);
+    this.firebaseui = new firebaseui.auth.AuthUI(this.app.auth());
+  }
+
+  public isLoggedIn = (): Promise<boolean> =>
+    new Promise((res) => {
+      this.app.auth().onAuthStateChanged((user: any) => {
+        if (user) {
+          res(true);
+        } else {
+          res(false);
+        }
+      });
+    });
+
+  @action
+  public getUserInfo = () => {
+    const user = this.app.auth().currentUser;
+    if (user) {
+      return {
+        displayName: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        photoURL: user.photoURL,
+        uid: user.uid,
+        phoneNumber: user.phoneNumber,
+        providerData: user.providerData,
+      };
+    } else return undefined;
+  };
 
   public start = (callback: Function) => {
     const uiConfig = {
@@ -40,26 +63,32 @@ class Firebase implements IFirebaseStore {
       },
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         // firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
         // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
       ],
     };
-    this.auth.start("#firebaseui-auth-container", uiConfig);
-  };
-
-  public getUser = () => {
-    console.log(this.auth);
+    this.firebaseui.start("#firebaseui-auth-container", uiConfig);
   };
 }
 
 export interface IFirebaseStore {
-  auth: any;
   start: (callback: Function) => void;
-  getUser: () => void;
+  getUserInfo: () => void;
+  isLoggedIn: () => Promise<boolean>;
+}
+
+interface IUserData {
+  displayName: string;
+  email: string;
+  emailVerified: string;
+  photoURL: string;
+  uid: string;
+  phoneNumber: string;
+  providerData: string;
 }
 
 export default Firebase;

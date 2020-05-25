@@ -5,6 +5,10 @@
   text-align: center;
   flex-direction: column;
 
+  .login-container {
+    width: 90%;
+  }
+
   .title-text {
     color: white;
     margin-bottom: 70px;
@@ -51,6 +55,7 @@
   .firebaseui-idp-button {
     display: flex;
     align-items: center;
+    max-width: 100%;
     width: 100%;
     padding: 15px;
     border-radius: 7px;

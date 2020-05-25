@@ -8,25 +8,40 @@ interface ILoginProps {
   history?: any;
 }
 
-class Login extends React.Component<ILoginProps, { app: any; ui: any }> {
-  //   constructor(props: ILoginProps) {
-  //     super(props);
-  //   }
+class Login extends React.Component<ILoginProps, any> {
+  constructor(props: any) {
+    super(props);
 
-  componentDidMount() {
-    rootStore.firebase.start((authResult: any, redirectUrl: any) => {
-      return false;
+    rootStore.firebase.isLoggedIn().then((isLoggedIn: boolean) => {
+      if (isLoggedIn) {
+        this.setState({ isLoggedIn: true });
+      } else {
+        this.setState({ isLoggedIn: false });
+      }
     });
+
+    this.state = {
+      isLoggedIn: undefined,
+    };
+  }
+
+  componentDidUpdate() {
+    if (this.state.isLoggedIn === false) {
+      rootStore.firebase.start((authResult: any, redirectUrl: any) => {
+        return false;
+      });
+    }
   }
 
   render() {
-    const isLoggedIn = !!rootStore.userstore.user;
-    if (isLoggedIn) return <h1>Logged In</h1>;
-
-    if (!isLoggedIn)
+    if (this.state.isLoggedIn === undefined) {
+      return <h1>CHECKING</h1>;
+    } else if (this.state.isLoggedIn === true) {
+      return <h1>LOGGED IN</h1>;
+    } else {
       return (
         <section className="page page-Login">
-          <div id="firebaseui-auth-container"></div>
+          <div id="firebaseui-auth-container" className="login-container"></div>
           <div className="message">
             <p>
               By continuing, you are indicating that you accept our{" "}
@@ -36,6 +51,7 @@ class Login extends React.Component<ILoginProps, { app: any; ui: any }> {
           </div>
         </section>
       );
+    }
   }
 }
 

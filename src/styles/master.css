@@ -556,6 +556,9 @@
   text-align: center;
   flex-direction: column;
 }
+.page-Login .login-container {
+  width: 90%;
+}
 .page-Login .title-text {
   color: white;
   margin-bottom: 70px;
@@ -592,6 +595,7 @@
 .page-Login .firebaseui-idp-button {
   display: flex;
   align-items: center;
+  max-width: 100%;
   width: 100%;
   padding: 15px;
   border-radius: 7px;
@@ -634,6 +638,10 @@ body .root {
   overflow: hidden;
   background-color: #3c4f6c;
   background: linear-gradient(180deg, #3c4f6c 0%, #0a1944 100%);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1rem;
 }
 
 .page {
