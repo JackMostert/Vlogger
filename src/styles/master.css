@@ -543,10 +543,30 @@
 
 .page-stream {
   color: white;
+  display: flex;
+  flex-direction: column;
+}
+.page-stream .video-holder {
+  width: 90%;
+  margin: 0 auto;
+}
+.page-stream .messagingchat {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  height: 600px;
+  width: 100%;
+  background-color: initial;
+}
+.page-stream .messagingchat .messagingchat__header {
+  box-shadow: initial;
 }
 
 .page-watch {
   padding: 0 20px;
+}
+
+.chattextfield {
+  display: none;
 }
 
 .page-Login {

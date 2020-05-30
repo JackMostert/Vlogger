@@ -1,63 +1,63 @@
 const set = require("set-value");
 const validator = require("validator");
-const _ = require("lodash");
 const moment = require("moment");
 
-const DeepValidate = (body) =>
-  new Promise((res, rej) => {
-    _.map(body, (el, key) => {
-      if (el.Value !== undefined)
-        switch (el.Type.toLowerCase()) {
-          case "uuid":
-            if (!validate.uuid(el.Value)) {
-              rej(errorMessage(el.Value, el.Type, key, "invalid uuid"));
-            }
-            break;
-          case "string":
-            if (!validate.string(el.Value)) {
-              rej(errorMessage(el.Value, el.Type, key, "invalid string"));
-            }
-            break;
-          case "number":
-            if (!validate.number(el.Value)) {
-              rej(errorMessage(el.Value, el.Type, key, "invalid number"));
-            }
-            break;
-          case "date":
-            if (!validate.date(el.Value)) {
-              rej(errorMessage(el.Value, el.Type, key, "invalid date"));
-            }
-            break;
-          case "email":
-            if (!validate.email(el.Value)) {
-              rej(errorMessage(el.Value, el.Type, key, "invalid email"));
-            }
-            break;
-        }
-    });
-    res();
-  });
+const DeepValidate = (value) => {
+  for (const key in value) {
+    if (value.hasOwnProperty(key)) {
+      if (value[key].value) {
+        DeepValidate(value[key]);
+      }
 
-const errorMessage = (value, type, field, message) => {
-  return { Value: value, Type: type, Field: field, Message: message };
+      if (Array.isArray(value[key])) {
+        for (let i = 0; i < value[key].length; i++) {
+          const element = value[key][i];
+          DeepValidate(element);
+        }
+      }
+
+      if (key === "field_type") {
+        switch (value[key]) {
+          case "date":
+            if (!moment(value["value"]).isValid())
+              throwError(value, `not a valid date`);
+            break;
+          case "uuid":
+            if (validator.isUUID(value["value"], 4)) {
+              break;
+            } else {
+              throwError(value, `not valid: ${value[key]}`);
+            }
+          case "number":
+            if (validator.isNumeric(value["value"])) {
+              const v = value["value"] + "";
+              if (v !== "0" && v !== "1" && v !== "-1") {
+                throwError(value, `value must be [1, 0, -1]`);
+              } else {
+                break;
+              }
+            } else {
+              throwError(value, `not valid: ${value[key]}`);
+            }
+          case "string":
+            value["value"];
+            break;
+
+          default:
+            throw "field_type is invalid";
+        }
+      }
+    }
+  }
 };
 
-const validate = {
-  uuid: (uuid) => {
-    return !!validator.isUUID(uuid, [4]);
-  },
-  string: (string) => {
-    return !validator.isEmpty(string);
-  },
-  number: (number) => {
-    return !!validator.isNumeric(number);
-  },
-  date: (date) => {
-    return !!moment(date).isValid();
-  },
-  email: (email) => {
-    return !!validator.isEmail(email);
-  },
+const throwError = (object, reason = "") => {
+  const errorMessage = {
+    value: object,
+    reason: reason,
+  };
+
+  throw `${JSON.stringify(errorMessage, null, 2)}`;
 };
 
 module.exports = DeepValidate;

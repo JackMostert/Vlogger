@@ -39,6 +39,7 @@ const Icon: React.FunctionComponent<IIconProps> = (props) => {
     { className: ClassName, onClick: allowOnClick },
     [
       <i
+        onClick={onClick}
         className={`${iconName} icon__icon`}
         style={{ fontSize: iconSize, ...style }}
       ></i>,

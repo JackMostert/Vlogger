@@ -1,5 +1,4 @@
 import * as React from "react";
-import moment from "moment";
 import MediaCard from "../components/Cards/Media/Media";
 
 interface IDiscoverProps {

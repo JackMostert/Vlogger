@@ -4,11 +4,12 @@ export interface IImageProps {
   imgURL: string;
   contentLeft?: React.ReactElement;
   contentRight?: React.ReactElement;
+  onClick?: () => void;
 }
 
 const Image: React.FunctionComponent<IImageProps> = (props) => {
   return (
-    <button className="image-card">
+    <button className="image-card" onClick={props.onClick}>
       <img className="image-card__img" src={props.imgURL} alt="" />
       <div className="image-card__content-holder">
         <div className="image-card__content-left">{props.contentLeft}</div>

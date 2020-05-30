@@ -1,6 +1,5 @@
 import * as React from "react";
-import Text from "../components/Text/Text";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import rootStore from "../store/RootStore";
 
 interface ILoginProps {
@@ -35,9 +34,9 @@ class Login extends React.Component<ILoginProps, any> {
 
   render() {
     if (this.state.isLoggedIn === undefined) {
-      return <h1>CHECKING</h1>;
+      return <h1>Checking....</h1>;
     } else if (this.state.isLoggedIn === true) {
-      return <h1>LOGGED IN</h1>;
+      return <Redirect to="/" />;
     } else {
       return (
         <section className="page page-Login">

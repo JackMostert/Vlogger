@@ -1,3 +1,21 @@
 .page-stream {
   color: white;
+  display: flex;
+  flex-direction: column;
+
+  .video-holder {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .messagingchat {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: 600px;
+    width: 100%;
+    background-color: initial;
+    .messagingchat__header {
+      box-shadow: initial;
+    }
+  }
 }

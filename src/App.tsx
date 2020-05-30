@@ -15,6 +15,7 @@ import Login from "./routes/Login";
 import Privacy from "./routes/Privacy";
 import Terms from "./routes/Terms";
 import LoginSuccess from "./routes/LoginSuccess";
+import WatchVideo from "./routes/WatchVideo";
 
 @inject("rootStore")
 @observer
@@ -59,6 +60,9 @@ class App extends React.Component<{ rootStore?: IrootStore }> {
               <Route path="/terms">{(props) => <Terms route={props} />}</Route>
               <Route path="/privacy">
                 {(props) => <Privacy route={props} />}
+              </Route>
+              <Route exact path="/watchvideo/:id">
+                {(props) => <WatchVideo route={props} />}
               </Route>
               <Route path="/404">
                 <h1>Page Not Found</h1>

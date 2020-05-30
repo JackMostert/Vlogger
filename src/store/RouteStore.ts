@@ -16,8 +16,8 @@ class RouteStore implements IRouteStore {
       (route: IRoutes) =>
         route.url === this.rootStore.routingStore.location.pathname
     );
-
-    return route[0] || this.rootStore.routingStore.history.push("/404");
+    return route[0];
+    // return route[0] || this.rootStore.routingStore.history.push("/404");
   };
 
   public routes = [
@@ -51,17 +51,19 @@ class RouteStore implements IRouteStore {
     },
     {
       displayName: "GO LIVE TEST",
-      url: "/golive:12",
+      url:
+        "/golive:e5281a5c-104b-41a8-adfa-4f563cacdadc17468a95-6327-4b33-9f72-2df5dd347279014fc3f6-46e0-48c4-9490-595908ce732c",
       icon: "las la-binoculars",
       arialLabel: "",
-      displayOnMenu: false,
+      displayOnMenu: true,
     },
     {
       displayName: "Watch TEST",
-      url: "/watch:12",
+      url:
+        "/watch:e5281a5c-104b-41a8-adfa-4f563cacdadc17468a95-6327-4b33-9f72-2df5dd347279014fc3f6-46e0-48c4-9490-595908ce732c",
       icon: "las la-binoculars",
       arialLabel: "",
-      displayOnMenu: false,
+      displayOnMenu: true,
     },
     {
       displayName: "Login Success",
@@ -87,6 +89,13 @@ class RouteStore implements IRouteStore {
     {
       displayName: "Page Not Found",
       url: "/404",
+      icon: "las la-home",
+      arialLabel: "",
+      displayOnMenu: false,
+    },
+    {
+      displayName: "Watching Video",
+      url: "/watchvideo/",
       icon: "las la-home",
       arialLabel: "",
       displayOnMenu: false,

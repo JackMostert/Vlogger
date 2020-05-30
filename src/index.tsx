@@ -6,7 +6,7 @@ import { Provider } from "mobx-react";
 import rootStore from "./store/RootStore";
 import { Router } from "react-router";
 import { history } from "./store/RootStore";
-import "firebaseui/dist/firebaseui.css"
+import "firebaseui/dist/firebaseui.css";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

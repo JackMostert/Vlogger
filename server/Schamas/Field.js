@@ -1,42 +1,25 @@
 const schema = require("schm");
 
-const FieldRequired = schema({
-  Value: {
+const Field = schema({
+  value: {
     type: String,
     required: true,
   },
   //
-  Type: {
+  field_type: {
     type: String,
     required: true,
   },
   //
-  LastEdit: {
+  created: {
+    type: Date,
+    required: true,
+  },
+  //
+  last_updated: {
     type: Date,
     required: true,
   },
 });
-
-const FieldOptional = schema({
-  Value: {
-    type: String,
-    required: false,
-  },
-  //
-  Type: {
-    type: String,
-    required: false,
-  },
-  //
-  LastEdit: {
-    type: Date,
-    required: false,
-  },
-});
-
-const Field = {
-  optional: FieldOptional,
-  required: FieldRequired,
-};
 
 module.exports = Field;
