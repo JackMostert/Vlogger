@@ -56,6 +56,9 @@ class Stream extends React.Component<any> {
 
     this.peer.on("open", (id: any) => {
       console.log("Connected to server with ID of: " + id);
+      //   Axios.post("http://192.168.0.5:4000/addstreamer", {
+      //     id: this.props.route.match.params.videoID,
+      //   });
     });
 
     this.peer.on("connection", this.onPeerConnetion);
@@ -86,6 +89,9 @@ class Stream extends React.Component<any> {
 
   @action
   private stop = () => {
+    // Axios.post("http://192.168.0.5:4000/removestreamer", {
+    //   id: this.props.route.match.params.videoID,
+    // });
     this.peer = null;
     this.conn = [];
     this.chat = [];
@@ -132,6 +138,9 @@ class Stream extends React.Component<any> {
   private call = () => {
     this.peer.call("111", this.stream);
     this.startRecording();
+    // Axios.post("http://192.168.0.5:4000/addstreamer", {
+    //   id: this.props.route.match.params.videoID,
+    // });
   };
 
   private startRecording = () => {

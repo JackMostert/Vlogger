@@ -56,7 +56,7 @@ class Watch extends React.Component<any> {
 
   private connect = () => {
     this.peer = new Peer("111", {
-      host: "127.0.0.1",
+      host: "192.168.0.5",
       port: 4000,
       path: "/peerjs/myapp",
     });
@@ -66,6 +66,7 @@ class Watch extends React.Component<any> {
       call.on("stream", (remoteStream: any) => {
         const video: any = document.querySelector("#stream_video");
         video.srcObject = remoteStream;
+        console.log(remoteStream);
       });
     });
 

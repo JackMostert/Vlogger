@@ -7,7 +7,10 @@ const { ExpressPeerServer } = require("peer");
 const multer = require("multer");
 const upload = multer();
 const fs = require("fs");
+const _ = require("lodash");
 app.use(express.static(__dirname));
+
+let usersStreaming = [];
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -18,7 +21,7 @@ const server = app.listen(4000, (args) => {
   console.log("Server has started");
 });
 
-let io = require("socket.io")(server);
+// let io = require("socket.io")(server);
 
 const peerServer = ExpressPeerServer(server, {
   path: "/myapp",
@@ -60,12 +63,26 @@ app.post("debug", (req, res) => {
   res.send(req.body);
 });
 
-io.sockets.on("connection", function (socket) {
-  //var socket is the socket for the client who has connected.
+let interval;
+
+// io.sockets.on("connection", (socket) => {
+//   console.log("New client connected");
+//   if (interval) {
+//     clearInterval(interval);
+//   }
+//   interval = setInterval(() => getApiAndEmit(socket), 1000);
+//   socket.on("disconnect", () => {
+//     console.log("Client disconnected");
+//     clearInterval(interval);
+//   });
+// });
+
+const getApiAndEmit = (socket) => {
   fs.readdir(__dirname + "/videos/", (err, files) => {
-    socket.emit("files", files);
+    socket.emit("FromAPI", files);
   });
-});
+  socket.emit("users", usersStreaming);
+};
 
 app.get("/video/:id", function (req, res) {
   const path = `videos/${req.params.id}.webm`;
@@ -99,5 +116,15 @@ app.get("/video/:id", function (req, res) {
 app.get("/allvideos", (req, res) => {
   fs.readdir(__dirname + "/videos/", (err, files) => {
     res.send(files);
+  });
+});
+
+app.post("/addstreamer", (req, res) => {
+  usersStreaming.push(req.body.id);
+});
+
+app.post("/removestreamer", (req, res) => {
+  usersStreaming = _.filter(usersStreaming, (userID) => {
+    return userID !== req.body.id;
   });
 });

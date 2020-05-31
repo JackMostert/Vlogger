@@ -22,6 +22,7 @@
     "schm": "^0.4.1",
     "set-value": "^3.0.2",
     "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "uuid": "^7.0.3",
     "validator": "^13.0.0"
   }

@@ -10,7 +10,8 @@ import Icon from "../components/Icon/Icon";
 import rootStore from "../store/RootStore";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
-import Axios from "axios";
+// @ts-ignore
+// import io from "socket.io-client";
 
 interface IHomeProps {
   route: any;
@@ -20,13 +21,25 @@ interface IHomeProps {
 @observer
 class Home extends React.Component<IHomeProps> {
   @observable
-  private items = [];
+  private items: any[] = [];
+
+  @observable
+  private users: any[] = [];
+
+//   private socket = io("http://192.168.0.5:4000");
 
   @action
   componentWillMount() {
-    Axios.get("http://192.168.0.5:4000/allvideos").then((data) => {
-      this.items = data.data;
-    });
+    // this.socket.on("FromAPI", (data: any) => {
+    //   if (this.items.length !== data.length) {
+    //     this.items = data;
+    //   }
+    // });
+    // this.socket.on("users", (data: any) => {
+    //   if (this.users.length !== data.length) {
+    //     this.users = data;
+    //   }
+    // });
   }
 
   render() {
@@ -74,9 +87,6 @@ class Home extends React.Component<IHomeProps> {
             <Text type="h5" text="Discover" />
             <Text type="p" text="See All" />
           </div>
-
-          {console.log(this.items)}
-
           {this.items.map((item: any) => {
             return (
               <>
@@ -84,6 +94,40 @@ class Home extends React.Component<IHomeProps> {
                   onClick={() => {
                     rootStore.routingStore.history.push(
                       `/watchvideo/${item.replace(/\..*$/, "")}`
+                    );
+                  }}
+                  imgURL={
+                    "https://picsum.photos/640/300?" + item.replace(/\..*$/, "")
+                  }
+                  contentLeft={
+                    <ProfileThumbnail
+                      name="Jane Doe"
+                      //   imageURL="https://randomuser.me/api/portraits/women/17.jpg"
+                    />
+                  }
+                  contentRight={
+                    <Icon
+                      iconName="las la-feather-alt"
+                      iconSize={22}
+                      inline
+                      textProps={{
+                        type: "p",
+                        text: moment().startOf("day").fromNow(),
+                      }}
+                    />
+                  }
+                />
+                <br></br>
+              </>
+            );
+          })}
+          {this.users.map((item: any) => {
+            return (
+              <>
+                <ImageCard
+                  onClick={() => {
+                    rootStore.routingStore.history.push(
+                      `/watch:${item.replace(/\..*$/, "")}`
                     );
                   }}
                   imgURL={

@@ -22,7 +22,7 @@ class Video extends React.Component<IVideoProps> {
       <section className="video">
         <div className="video__aspect-ratio">
           <div className="video__video-container">
-            {this.props.src && this.props.videoRef && (
+            {this.props.src && (
               <video
                 autoPlay={true}
                 className="video__video"
