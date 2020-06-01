@@ -1,36 +1,33 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const admin = require("firebase-admin");
-const serviceAccount = require("./doNotInclude/firebaseKey.json");
+// const admin = require("firebase-admin");
+// const serviceAccount = require("./doNotInclude/firebaseKey.json");
 const { ExpressPeerServer } = require("peer");
 const multer = require("multer");
 const upload = multer();
 const fs = require("fs");
 const _ = require("lodash");
-app.use(express.static(__dirname));
 
 let usersStreaming = [];
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://vlogger-990d6.firebaseio.com",
-});
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://vlogger-990d6.firebaseio.com",
+// });
 
 const server = app.listen(4000, (args) => {
   console.log("Server has started");
 });
-
-// let io = require("socket.io")(server);
 
 const peerServer = ExpressPeerServer(server, {
   path: "/myapp",
   debug: true,
 });
 
-app.use("/peerjs", peerServer);
+let io = require("socket.io")(server);
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -39,6 +36,8 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
   next();
 });
+
+app.use("/peerjs", peerServer);
 
 app.post("/video", upload.any(), (req, res) => {
   fs.writeFile(
@@ -65,17 +64,17 @@ app.post("debug", (req, res) => {
 
 let interval;
 
-// io.sockets.on("connection", (socket) => {
-//   console.log("New client connected");
-//   if (interval) {
-//     clearInterval(interval);
-//   }
-//   interval = setInterval(() => getApiAndEmit(socket), 1000);
-//   socket.on("disconnect", () => {
-//     console.log("Client disconnected");
-//     clearInterval(interval);
-//   });
-// });
+io.sockets.on("connection", (socket) => {
+  console.log("New client connected");
+  if (interval) {
+    clearInterval(interval);
+  }
+  interval = setInterval(() => getApiAndEmit(socket), 1000);
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    clearInterval(interval);
+  });
+});
 
 const getApiAndEmit = (socket) => {
   fs.readdir(__dirname + "/videos/", (err, files) => {

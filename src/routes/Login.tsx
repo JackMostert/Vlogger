@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, Redirect } from "react-router-dom";
-import rootStore from "../store/RootStore";
+// import rootStore from "../store/RootStore";
 
 interface ILoginProps {
   route: any;
@@ -11,13 +11,13 @@ class Login extends React.Component<ILoginProps, any> {
   constructor(props: any) {
     super(props);
 
-    rootStore.firebase.isLoggedIn().then((isLoggedIn: boolean) => {
-      if (isLoggedIn) {
-        this.setState({ isLoggedIn: true });
-      } else {
-        this.setState({ isLoggedIn: false });
-      }
-    });
+    // rootStore.firebase.isLoggedIn().then((isLoggedIn: boolean) => {
+    //   if (isLoggedIn) {
+    //     this.setState({ isLoggedIn: true });
+    //   } else {
+    //     this.setState({ isLoggedIn: false });
+    //   }
+    // });
 
     this.state = {
       isLoggedIn: undefined,
@@ -26,9 +26,9 @@ class Login extends React.Component<ILoginProps, any> {
 
   componentDidUpdate() {
     if (this.state.isLoggedIn === false) {
-      rootStore.firebase.start((authResult: any, redirectUrl: any) => {
-        return false;
-      });
+      //   rootStore.firebase.start((authResult: any, redirectUrl: any) => {
+      //     return false;
+      //   });
     }
   }
 

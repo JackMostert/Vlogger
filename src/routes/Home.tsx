@@ -11,7 +11,7 @@ import rootStore from "../store/RootStore";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 // @ts-ignore
-// import io from "socket.io-client";
+import io from "socket.io-client";
 
 interface IHomeProps {
   route: any;
@@ -26,20 +26,20 @@ class Home extends React.Component<IHomeProps> {
   @observable
   private users: any[] = [];
 
-//   private socket = io("http://192.168.0.5:4000");
+  private socket = io("http://localhost:4000");
 
   @action
   componentWillMount() {
-    // this.socket.on("FromAPI", (data: any) => {
-    //   if (this.items.length !== data.length) {
-    //     this.items = data;
-    //   }
-    // });
-    // this.socket.on("users", (data: any) => {
-    //   if (this.users.length !== data.length) {
-    //     this.users = data;
-    //   }
-    // });
+    this.socket.on("FromAPI", (data: any) => {
+      if (this.items.length !== data.length) {
+        this.items = data;
+      }
+    });
+    this.socket.on("users", (data: any) => {
+      if (this.users.length !== data.length) {
+        this.users = data;
+      }
+    });
   }
 
   render() {

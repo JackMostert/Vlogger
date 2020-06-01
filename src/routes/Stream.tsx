@@ -24,12 +24,20 @@ function create_UUID() {
   return uuid;
 }
 
+let connected = false;
+
 @observer
 class Stream extends React.Component<any> {
   private onPeerConnetion = (conn: any) => {
     conn.on("data", this.onPeerData);
     this.conn.push(conn);
   };
+
+  componentWillUnmount() {
+    Axios.post("http://localhost:4000/removestreamer", {
+      id: this.props.route.match.params.videoID,
+    });
+  }
 
   private conn: Array<any> = [];
 
@@ -46,19 +54,30 @@ class Stream extends React.Component<any> {
 
   private stream: any;
 
-  @action
   private connect = () => {
+    if (connected) return;
+
+    connected = true;
+
     this.peer = new Peer(this.props.route.match.params.videoID, {
-      host: "192.168.0.5",
+      host: "localhost",
       port: 4000,
       path: "/peerjs/myapp",
     });
 
     this.peer.on("open", (id: any) => {
       console.log("Connected to server with ID of: " + id);
-      //   Axios.post("http://192.168.0.5:4000/addstreamer", {
-      //     id: this.props.route.match.params.videoID,
-      //   });
+      Axios.post("http://localhost:4000/addstreamer", {
+        id: this.props.route.match.params.videoID,
+      });
+    });
+
+    this.peer.on("connection", function (c: any) {
+      console.log("Connection");
+    });
+
+    this.peer.on("error", function (err: any) {
+      console.log(err);
     });
 
     this.peer.on("connection", this.onPeerConnetion);
@@ -89,9 +108,9 @@ class Stream extends React.Component<any> {
 
   @action
   private stop = () => {
-    // Axios.post("http://192.168.0.5:4000/removestreamer", {
-    //   id: this.props.route.match.params.videoID,
-    // });
+    Axios.post("http://localhost:4000/removestreamer", {
+      id: this.props.route.match.params.videoID,
+    });
     this.peer = null;
     this.conn = [];
     this.chat = [];
@@ -138,9 +157,6 @@ class Stream extends React.Component<any> {
   private call = () => {
     this.peer.call("111", this.stream);
     this.startRecording();
-    // Axios.post("http://192.168.0.5:4000/addstreamer", {
-    //   id: this.props.route.match.params.videoID,
-    // });
   };
 
   private startRecording = () => {
@@ -170,7 +186,7 @@ class Stream extends React.Component<any> {
       const blob = new Blob(this.recordedBlobs);
       let data = new FormData();
       data.append("file", blob, `${create_UUID()}.webm`);
-      Axios.post("http://192.168.0.5:4000/video", data)
+      Axios.post("http://localhost:4000/video", data)
         .then((data) => {
           console.log(data);
         })

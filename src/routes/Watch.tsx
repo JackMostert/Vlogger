@@ -9,6 +9,8 @@ import { PrimaryButton, TextField } from "@fluentui/react";
 interface IWatchProps {
   route: any;
 }
+let connected = false;
+
 @observer
 class Watch extends React.Component<any> {
   private onPeerOpen = (id: string) => {
@@ -18,8 +20,10 @@ class Watch extends React.Component<any> {
   private onHostConnect = () => {
     console.log(`Connected to host: ${this.conn.peer}`);
     this.conn.on("data", this.onPeerData);
+    this.forceUpdate();
   };
 
+  @action
   private onPeerData = (data: any) => {
     this.chat.push(data);
     this.forceUpdate();
@@ -38,6 +42,7 @@ class Watch extends React.Component<any> {
       };
       this.conn.send(payload);
     }
+    this.forceUpdate();
   };
 
   @observable
@@ -55,10 +60,18 @@ class Watch extends React.Component<any> {
   private stream: any;
 
   private connect = () => {
+    if (connected) return;
+
+    connected = true;
+
     this.peer = new Peer("111", {
-      host: "192.168.0.5",
+      host: "localhost",
       port: 4000,
       path: "/peerjs/myapp",
+    });
+
+    this.conn = this.peer.connect(this.props.route.match.params.videoID, {
+      reliable: true,
     });
 
     this.peer.on("call", (call: any) => {
@@ -66,14 +79,11 @@ class Watch extends React.Component<any> {
       call.on("stream", (remoteStream: any) => {
         const video: any = document.querySelector("#stream_video");
         video.srcObject = remoteStream;
-        console.log(remoteStream);
       });
     });
 
     this.peer.on("open", this.onPeerOpen);
-    this.conn = this.peer.connect(this.props.route.match.params.videoID, {
-      reliable: true,
-    });
+
     this.conn.on("open", this.onHostConnect);
   };
 

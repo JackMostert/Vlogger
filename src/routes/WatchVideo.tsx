@@ -6,8 +6,6 @@ interface IWatchVideoProps {
 
 class WatchVideo extends React.Component<IWatchVideoProps> {
   render() {
-    console.log(this.props);
-
     return (
       <section className="page page-watch page-stream">
         <div className="video-holder">
@@ -17,7 +15,7 @@ class WatchVideo extends React.Component<IWatchVideoProps> {
                 <video
                   autoPlay={true}
                   className="video__video"
-                  src={`http://192.168.0.5:4000/video/${this.props.route.match.params.id}`}
+                  src={`http://localhost:4000/video/${this.props.route.match.params.id}`}
                 />
               </div>
             </div>
